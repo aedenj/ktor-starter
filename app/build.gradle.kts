@@ -42,12 +42,19 @@ dependencies {
 
 application {
     mainClass.set("io.ktor.server.netty.EngineMain")
+    version = "0.1"
 }
 
 tasks {
     java {
         toolchain {
             languageVersion = JavaLanguageVersion.of(21)
+        }
+    }
+
+    ktor {
+        fatJar {
+            archiveFileName.set("${project.parent?.name}-${project.name}-${project.version}.jar")
         }
     }
 

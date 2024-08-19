@@ -7,7 +7,7 @@ junit-jupiter = "5.10.3"
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 ktor-server-core = { module = "io.ktor:ktor-server-core-jvm", version.ref = "ktor" }
 ktor-server-netty = { module = "io.ktor:ktor-server-netty-jvm", version.ref = "ktor" }
-logback = { module = "ch.qos.logback:logback-classic", version = "1.5.6" }
+logback = { module = "ch.qos.logback:logback-classic", version = "1.5.7" }
 
 ktor-server-test = { module = "io.ktor:ktor-server-test-host", version.ref = "ktor" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }

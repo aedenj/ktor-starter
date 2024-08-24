@@ -43,6 +43,7 @@ dependencies {
 application {
     mainClass.set("io.ktor.server.netty.EngineMain")
     version = "0.1"
+    applicationDefaultJvmArgs = listOf("-Dio.ktor.development=true")
 }
 
 tasks {

@@ -36,6 +36,6 @@ This will start the app on port 8080. Navigate to [http://localhost:8080](http:/
 
 ## Live Reload
 
-When running the service via docker compose [Ktor's auto-reload]https://ktor.io/docs/server-auto-reload.html#recompile()
+When running the service via docker compose [Ktor's auto-reload](https://ktor.io/docs/server-auto-reload.html#recompile)
 functionality is enabled. This means that if you open a separate terminal and run the command `./gradlew -t build -x test -i`
 when you make changes to the code, the service will automatically reload.

@@ -1,4 +1,4 @@
-# Ktor Starter
+# Ktor Starter (In Progress)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://www.opensource.org/licenses/MIT)
 [![Build](https://github.com/aedenj/kotlin-microservice-starter/actions/workflows/build.yml/badge.svg)](https://github.com/aedenj/kotlin-microservice-starter/actions/workflows/build.yml)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
@@ -18,7 +18,7 @@ sets up the following features:
 
 
 ## Pre-Requisites
-1. Docker 
+1. Docker
 
 1. [Gradle](https://gradle.org) - via your preferred development workflow.
 
@@ -36,6 +36,6 @@ This will start the app on port 8080. Navigate to [http://localhost:8080](http:/
 
 ## Live Reload
 
-When running the service via docker compose [Ktor's auto-reload]https://ktor.io/docs/server-auto-reload.html#recompile() 
-functionality is enabled. This means that if you open a separate terminal and run the command `./gradlew -t build -x test -i` 
+When running the service via docker compose [Ktor's auto-reload]https://ktor.io/docs/server-auto-reload.html#recompile()
+functionality is enabled. This means that if you open a separate terminal and run the command `./gradlew -t build -x test -i`
 when you make changes to the code, the service will automatically reload.

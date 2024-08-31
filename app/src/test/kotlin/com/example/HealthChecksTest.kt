@@ -13,6 +13,14 @@ import org.junit.jupiter.api.Test
 class HealthChecksTest {
 
     @Test
+    @DisplayName("startup path returns ok")
+    fun testStartup() = testApplication {
+        val response = client.get("/readiness")
+
+        assertThat(HttpStatusCode.OK).isEqualTo(response.status)
+    }
+
+    @Test
     @DisplayName("readiness path returns ok")
     fun testReadiness() = testApplication {
         val response = client.get("/readiness")

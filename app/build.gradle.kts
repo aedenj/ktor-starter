@@ -25,11 +25,9 @@ dependencies {
         libs.kotlin.stdlib,
         libs.ktor.server.core,
         libs.ktor.server.netty,
+        libs.cohort,
         libs.logback,
     ).forEach { implementation(it) }
-
-    // Use JUnit Jupiter for testing.
-    testImplementation(libs.junit.jupiter)
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     listOf(
@@ -43,7 +41,12 @@ dependencies {
 application {
     mainClass.set("io.ktor.server.netty.EngineMain")
     version = "0.1"
-    applicationDefaultJvmArgs = listOf("-Dio.ktor.development=true")
+    applicationDefaultJvmArgs = listOf(
+        "-Dio.ktor.development=true",
+        "-Djava.security.egd=file:/dev/./urandom",
+        "-XX:+UseContainerSupport",
+        "-XX:MaxRAMPercentage=80",
+    )
 }
 
 tasks {
@@ -65,7 +68,7 @@ tasks {
         testlogger {
             theme = ThemeType.MOCHA
             slowThreshold = 5000
-            showStandardStreams = true
+            showStandardStreams = false
             showFullStackTraces = false
             logLevel = LogLevel.QUIET
         }

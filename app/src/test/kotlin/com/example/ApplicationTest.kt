@@ -6,6 +6,7 @@ package com.example
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
+import io.ktor.server.application.*
 import io.ktor.server.testing.*
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
@@ -21,5 +22,13 @@ class ApplicationTest {
 
         assertThat(HttpStatusCode.OK).isEqualTo(response.status)
         assertThat("Hello, world!").isEqualTo(response.bodyAsText())
+    }
+
+    @Test
+    @DisplayName("test ignore trailing slash in path")
+    fun testIgnoreTrailingSlash() = testApplication {
+        val response = client.get("/readiness/")
+
+        assertThat(HttpStatusCode.OK).isEqualTo(response.status)
     }
 }

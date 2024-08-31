@@ -24,6 +24,8 @@ bin/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+.kotlin
+
 
 ### NetBeans ###
 /nbproject/private/
@@ -37,3 +39,5 @@ out/
 
 ### MacOS ###
 .DS_Store
+
+

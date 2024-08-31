@@ -1,0 +1,30 @@
+package com.example
+
+import io.ktor.client.request.*
+import io.ktor.client.statement.*
+import io.ktor.http.*
+import io.ktor.server.application.*
+import io.ktor.server.testing.*
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Test
+
+@DisplayName("health checks")
+class HealthChecksTest {
+
+    @Test
+    @DisplayName("readiness path returns ok")
+    fun testReadiness() = testApplication {
+        val response = client.get("/readiness")
+
+        assertThat(HttpStatusCode.OK).isEqualTo(response.status)
+    }
+
+    @Test
+    @DisplayName("liveness path returns ok")
+    fun testLiveness() = testApplication {
+        val response = client.get("/liveness")
+
+        assertThat(HttpStatusCode.OK).isEqualTo(response.status)
+    }
+}

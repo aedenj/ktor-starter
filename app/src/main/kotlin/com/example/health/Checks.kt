@@ -9,8 +9,14 @@ import kotlinx.coroutines.Dispatchers
 
 fun Application.module() {
     install(Cohort) {
-        healthcheck("/startup", HealthCheckRegistry(Dispatchers.Default) {})
-        healthcheck("/readiness", HealthCheckRegistry(Dispatchers.Default) {})
-        healthcheck("/liveness", HealthCheckRegistry(Dispatchers.Default) {})
+        healthcheck("/startup", startupProbes())
+        healthcheck("/readiness", readinessProbes())
+        healthcheck("/liveness", livenessProbes())
     }
 }
+
+fun startupProbes() = HealthCheckRegistry(Dispatchers.Default) { }
+
+fun readinessProbes() = HealthCheckRegistry(Dispatchers.Default) { }
+
+fun livenessProbes() = HealthCheckRegistry(Dispatchers.Default) { }

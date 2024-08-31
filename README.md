@@ -9,7 +9,7 @@ sets up the following features:
 
 * A simple HTTP server with a default port of 8080 using Netty's EngineMain.
 * Ignore trailing slashes in routes. (e.g. `foo/` and `foo` are treated the same)
-* Kubernetes style readiness and liveness [health checks](https://softwarepatternslexicon.com/patterns-kotlin/behavioral/health-check/) 
+* Kubernetes style startup, readiness and liveness [health checks](https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/)
   using [Cohort](https://github.com/sksamuel/cohort).
 
 <!-- toc-begin -->

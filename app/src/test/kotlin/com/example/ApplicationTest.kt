@@ -12,18 +12,20 @@ import org.junit.jupiter.api.Test
 class ApplicationTest {
     @Test
     @DisplayName("root path returns 'Hello, world!'")
-    fun testRoot() = testApplication {
-        val response = client.get("/")
+    fun testRoot() =
+        testApplication {
+            val response = client.get("/")
 
-        assertThat(HttpStatusCode.OK).isEqualTo(response.status)
-        assertThat("Hello, world!").isEqualTo(response.bodyAsText())
-    }
+            assertThat(HttpStatusCode.OK).isEqualTo(response.status)
+            assertThat("Hello, world!").isEqualTo(response.bodyAsText())
+        }
 
     @Test
     @DisplayName("test ignore trailing slash in path")
-    fun testIgnoreTrailingSlash() = testApplication {
-        val response = client.get("/readiness/")
+    fun testIgnoreTrailingSlash() =
+        testApplication {
+            val response = client.get("/readiness/")
 
-        assertThat(HttpStatusCode.OK).isEqualTo(response.status)
-    }
+            assertThat(HttpStatusCode.OK).isEqualTo(response.status)
+        }
 }

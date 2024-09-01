@@ -11,25 +11,28 @@ import org.junit.jupiter.api.Test
 class HealthChecksTest {
     @Test
     @DisplayName("startup path returns ok")
-    fun testStartup() = testApplication {
-        val response = client.get("/readiness")
+    fun testStartup() =
+        testApplication {
+            val response = client.get("/readiness")
 
-        assertThat(HttpStatusCode.OK).isEqualTo(response.status)
-    }
+            assertThat(HttpStatusCode.OK).isEqualTo(response.status)
+        }
 
     @Test
     @DisplayName("readiness path returns ok")
-    fun testReadiness() = testApplication {
-        val response = client.get("/readiness")
+    fun testReadiness() =
+        testApplication {
+            val response = client.get("/readiness")
 
-        assertThat(HttpStatusCode.OK).isEqualTo(response.status)
-    }
+            assertThat(HttpStatusCode.OK).isEqualTo(response.status)
+        }
 
     @Test
     @DisplayName("liveness path returns ok")
-    fun testLiveness() = testApplication {
-        val response = client.get("/liveness")
+    fun testLiveness() =
+        testApplication {
+            val response = client.get("/liveness")
 
-        assertThat(HttpStatusCode.OK).isEqualTo(response.status)
-    }
+            assertThat(HttpStatusCode.OK).isEqualTo(response.status)
+        }
 }

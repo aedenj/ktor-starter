@@ -42,12 +42,13 @@ dependencies {
 application {
     mainClass.set("io.ktor.server.netty.EngineMain")
     version = "0.1"
-    applicationDefaultJvmArgs = listOf(
-        "-Dio.ktor.development=true",
-        "-Djava.security.egd=file:/dev/./urandom",
-        "-XX:+UseContainerSupport",
-        "-XX:MaxRAMPercentage=80",
-    )
+    applicationDefaultJvmArgs =
+        listOf(
+            "-Dio.ktor.development=true",
+            "-Djava.security.egd=file:/dev/./urandom",
+            "-XX:+UseContainerSupport",
+            "-XX:MaxRAMPercentage=80",
+        )
 }
 
 tasks {

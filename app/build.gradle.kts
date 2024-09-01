@@ -13,6 +13,9 @@ plugins {
     // https://github.com/JLLeitschuh/ktlint-gradle
     alias(libs.plugins.ktlint)
 
+    // https://kotlin.github.io/kotlinx-kover/gradle-plugin/
+    alias(libs.plugins.kover)
+
     // https://plugins.gradle.org/plugin/com.adarshr.test-logger
     alias(libs.plugins.testlogger)
 }

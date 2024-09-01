@@ -7,10 +7,15 @@
 This starter is a set of utilities built on top of [Ktor](https://ktor.io) to quickly bootstrap a microservice. This starter
 sets up the following features:
 
+**Service** 
 * A simple HTTP server with a default port of 8080 using Netty's EngineMain.
 * Ignore trailing slashes in routes. (e.g. `foo/` and `foo` are treated the same)
 * Kubernetes style startup, readiness and liveness [health checks](https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/)
   using [Cohort](https://github.com/sksamuel/cohort).
+
+**Infrastructure**
+* Github workflows for CI/CD 
+
 
 <!-- toc-begin -->
 * [Pre-requisites](#pre-requisites)

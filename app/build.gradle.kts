@@ -1,4 +1,3 @@
-
 import com.adarshr.gradle.testlogger.theme.ThemeType
 
 plugins {
@@ -10,6 +9,9 @@ plugins {
 
     // Provides the ability to package and containerize your Ktor application
     alias(libs.plugins.ktor)
+
+    // https://github.com/JLLeitschuh/ktlint-gradle
+    alias(libs.plugins.ktlint)
 
     // https://plugins.gradle.org/plugin/com.adarshr.test-logger
     alias(libs.plugins.testlogger)
@@ -35,7 +37,6 @@ dependencies {
         libs.assertj,
         libs.ktor.server.test,
     ).forEach { testImplementation(it) }
-
 }
 
 application {

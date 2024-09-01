@@ -4,7 +4,8 @@ package com.example.health
 
 import com.sksamuel.cohort.Cohort
 import com.sksamuel.cohort.HealthCheckRegistry
-import io.ktor.server.application.*
+import io.ktor.server.application.Application
+import io.ktor.server.application.install
 import kotlinx.coroutines.Dispatchers
 
 fun Application.module() {

@@ -21,7 +21,8 @@ sets up the following features:
 * Ignore trailing slashes in routes. (e.g. `foo/` and `foo` are treated the same)
 * Kubernetes style startup, readiness and liveness [health checks](https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/)
   using [Cohort](https://github.com/sksamuel/cohort).
-
+* The following Kotlin quality plugins are setup: ktlint, detekt and kover 
+ 
 **Infrastructure**
 * GitHub workflows for CI/CD 
 

@@ -16,6 +16,9 @@ plugins {
     // https://kotlin.github.io/kotlinx-kover/gradle-plugin/
     alias(libs.plugins.kover)
 
+    // https://detekt.dev/
+    alias(libs.plugins.detekt)
+
     // https://plugins.gradle.org/plugin/com.adarshr.test-logger
     alias(libs.plugins.testlogger)
 }
@@ -49,15 +52,13 @@ application {
         listOf(
             "-Dio.ktor.development=true",
             "-Djava.security.egd=file:/dev/./urandom",
-            "-XX:+UseContainerSupport",
-            "-XX:MaxRAMPercentage=80",
         )
 }
 
 tasks {
     java {
         toolchain {
-            languageVersion = JavaLanguageVersion.of(21)
+            languageVersion = JavaLanguageVersion.of(20)
         }
     }
 

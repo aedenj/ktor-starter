@@ -1,10 +1,10 @@
 services:
   ktor:
-    image:  eclipse-temurin:21-jdk
+    image:  eclipse-temurin:20-jdk
     ports:
       - "8080:8080"
     volumes:
         - $PWD:/app
     working_dir: /app
-    command: ./gradlew run --args='-Dio.ktor.development=true'
+    command: ./gradlew run
     restart: unless-stopped

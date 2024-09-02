@@ -4,6 +4,15 @@
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/aedenj/kotlin-microservice-starter/badge)](https://securityscorecards.dev/viewer/?uri=github.com/aedenj/kotlin-microservice-starter)
 
+<!-- toc-begin -->
+* [Overview](#overview)
+* [Pre-requisites](#pre-requisites)
+* [Up & Running](#up--running)
+* [Live Reload](#live-reload)
+<!-- toc-end -->
+
+## Overview
+
 This starter is a set of utilities built on top of [Ktor](https://ktor.io) to quickly bootstrap a microservice. This starter
 sets up the following features:
 
@@ -14,20 +23,14 @@ sets up the following features:
   using [Cohort](https://github.com/sksamuel/cohort).
 
 **Infrastructure**
-* Github workflows for CI/CD 
+* GitHub workflows for CI/CD 
 
-
-<!-- toc-begin -->
-* [Pre-requisites](#pre-requisites)
-* [Up & Running](#up--running)
-* [Live Reload](#live-reload)
-<!-- toc-end -->
 
 
 ## Pre-Requisites
 1. Docker
 
-1. [Gradle](https://gradle.org) - via your preferred development workflow.
+2. [Gradle](https://gradle.org) - via your preferred development workflow.
 
 ## Up & Running
 

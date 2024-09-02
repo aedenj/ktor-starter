@@ -67,6 +67,15 @@ tasks {
         }
     }
 
+    kover {
+        reports {
+            verify {
+                rule {
+                    minBound(100)
+                }
+            }
+        }
+    }
     test {
         useJUnitPlatform()
 

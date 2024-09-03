@@ -50,9 +50,8 @@ application {
     version = "0.1"
     applicationDefaultJvmArgs =
         listOf(
-            "-Dio.ktor.development=true",
             "-Djava.security.egd=file:/dev/./urandom",
-        )
+        ) + (System.getenv("APP_OPTS")?.split(" ") ?: emptyList())
 }
 
 tasks {

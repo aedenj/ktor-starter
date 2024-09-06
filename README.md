@@ -9,6 +9,7 @@
 * [Pre-requisites](#pre-requisites)
 * [Up & Running](#up--running)
 * [Live Reload](#live-reload)
+* [Troubleshooting](#troubleshooting)
 <!-- toc-end -->
 
 ## Overview
@@ -50,3 +51,26 @@ This will start the app on port 8080. Navigate to [http://localhost:8080](http:/
 When running the service via docker compose [Ktor's auto-reload](https://ktor.io/docs/server-auto-reload.html#recompile)
 functionality is enabled. This means that if you open a separate terminal and run the command `./gradlew -t build -x test -i`
 when you make changes to the code, the service will automatically reload.
+
+## Troubleshooting
+
+* When running JIB should you encounter an authentication error like following,
+
+```shell
+Got output:
+
+credentials not found in native keychain
+
+The credential helper (docker-credential-desktop) has nothing for server URL: registry.hub.docker.com
+```
+ try doing the following,
+
+1. Add the following to your ~/.docker/config.json file,
+
+```json
+"credHelpers" : {
+  "registry.hub.docker.com":"desktop"
+},
+```
+
+2. Re-run the JIB task.

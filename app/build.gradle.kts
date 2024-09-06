@@ -7,8 +7,8 @@ plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     application
 
-    // Provides the ability to package and containerize your Ktor application
-    alias(libs.plugins.ktor)
+    // https://github.com/GoogleContainerTools/jib/tree/master/jib-gradle-plugin#jib---containerize-your-gradle-java-project
+    alias(libs.plugins.jib)
 
     // https://github.com/JLLeitschuh/ktlint-gradle
     alias(libs.plugins.ktlint)
@@ -21,6 +21,9 @@ plugins {
 
     // https://plugins.gradle.org/plugin/com.adarshr.test-logger
     alias(libs.plugins.testlogger)
+
+    // https://github.com/dorongold/gradle-task-tree -- very helpful for debugging gradle tasks
+    alias(libs.plugins.tasktree)
 }
 
 repositories {
@@ -38,32 +41,54 @@ dependencies {
     ).forEach { implementation(it) }
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    implementation(platform(libs.testcontainers.bom))
     listOf(
         libs.junit.jupiter,
         libs.assertj,
         libs.ktor.server.test,
+        libs.testcontainers.core,
+        libs.testcontainers.junit,
     ).forEach { testImplementation(it) }
 }
+
+val jvmOpts =
+    listOf(
+        "-server",
+        "-Djava.awt.headless=true",
+        "-XX:+UseG1GC",
+        "-Djava.security.egd=file:/dev/./urandom",
+    ) + (System.getenv("APP_OPTS")?.split(" ") ?: emptyList())
 
 application {
     mainClass.set("io.ktor.server.netty.EngineMain")
     version = "0.1"
-    applicationDefaultJvmArgs =
-        listOf(
-            "-Djava.security.egd=file:/dev/./urandom",
-        ) + (System.getenv("APP_OPTS")?.split(" ") ?: emptyList())
+    applicationDefaultJvmArgs = jvmOpts
 }
 
 tasks {
     java {
         toolchain {
-            languageVersion = JavaLanguageVersion.of(20)
+            languageVersion = JavaLanguageVersion.of(11)
         }
     }
 
-    ktor {
-        fatJar {
-            archiveFileName.set("${project.parent?.name}-${project.name}-${project.version}.jar")
+    jib {
+        from {
+            image = "eclipse-temurin:11-jre"
+            platforms {
+                platform {
+                    architecture = "arm64"
+                    os = "linux"
+                }
+            }
+        }
+
+        to {
+            image = "${project.parent?.name}-${project.name}:latest"
+        }
+
+        container {
+            jvmFlags = jvmOpts
         }
     }
 
@@ -76,6 +101,7 @@ tasks {
             }
         }
     }
+
     test {
         useJUnitPlatform()
 

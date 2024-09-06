@@ -1,6 +1,6 @@
 services:
   ktor:
-    image:  eclipse-temurin:20-jdk
+    image: gradle:8.9.0-jdk11
     ports:
       - "8080:8080"
     volumes:

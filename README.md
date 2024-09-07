@@ -54,23 +54,18 @@ when you make changes to the code, the service will automatically reload.
 
 ## Troubleshooting
 
-* When running JIB should you encounter an authentication error like following,
+* The jib task may fail initially from an authentication error like following,
 
 ```shell
 Got output:
 
 credentials not found in native keychain
 
-The credential helper (docker-credential-desktop) has nothing for server URL: registry.hub.docker.com
+The credential helper (docker-credential-desktop) has nothing for server URL: registry-1.docker.io
 ```
- try doing the following,
+Make sure the task is actually failing. Jib tries serveral hosts and you may have credentials setup
+for one of them. If the task is failing, you can fix this by running the following commands,
 
-1. Add the following to your ~/.docker/config.json file,
-
-```json
-"credHelpers" : {
-  "registry.hub.docker.com":"desktop"
-},
-```
+1. Run `docker login registry-1.docker.io` and enter your Docker Hub credentials. 
 
 2. Re-run the JIB task.

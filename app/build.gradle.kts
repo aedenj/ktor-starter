@@ -43,6 +43,8 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     implementation(platform(libs.testcontainers.bom))
     listOf(
+        libs.restassured,
+        libs.restassured.kotlinext,
         libs.junit.jupiter,
         libs.assertj,
         libs.ktor.server.test,

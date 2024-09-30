@@ -72,7 +72,7 @@ jobs:
           java-version: ${{ matrix.java_version }}
           cache: "gradle"
       - name: Build & Test
-        run: ./gradlew build --no-daemon
+        run: ./gradlew jibBuildDocker test --no-daemon
       - name: Upload Test Results
         uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874 # v4.4.0
         if: failure()

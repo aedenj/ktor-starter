@@ -20,7 +20,7 @@ jobs:
         with:
           egress-policy: audit
 
-      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938 # v4.2.0
       - name: Gradle Wrapper Validation
         uses: gradle/wrapper-validation-action@f9c9c575b8b21b6485636a91ffecd10e558c62f6 # v3.5.0
 
@@ -57,7 +57,7 @@ jobs:
           egress-policy: audit
 
       - name: Checkout
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938 # v4.2.0
       - name: Configure Pagefile If Windows
         if: ${{ matrix.os  == 'windows-latest' }}
         uses: al-cheb/configure-pagefile-action@a3b6ebd6b634da88790d9c58d4b37a7f4a7b8708 # v1.4

@@ -13,7 +13,6 @@ import org.testcontainers.junit.jupiter.Container
 import org.testcontainers.junit.jupiter.Testcontainers
 import org.testcontainers.utility.DockerImageName
 
-
 @DisplayName("e2e system readiness test")
 @Testcontainers
 class E2EServiceReadinessTest {
@@ -34,14 +33,14 @@ class E2EServiceReadinessTest {
 
     @Test
     @DisplayName("service is ready")
-    fun `service is ready`()  {
-            Given {
-                hostIsIp(service.host)
-                port(service.getMappedPort(SERVICE_PORT))
-            } When {
-                get("/readiness")
-            } Then {
-                statusCode(HttpStatusCode.OK.value)
-            }
+    fun `service is ready`() {
+        Given {
+            hostIsIp(service.host)
+            port(service.getMappedPort(SERVICE_PORT))
+        } When {
+            get("/readiness")
+        } Then {
+            statusCode(HttpStatusCode.OK.value)
         }
+    }
 }

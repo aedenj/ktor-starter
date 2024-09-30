@@ -2,7 +2,6 @@ package com.example
 
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.hostIsIp
-import kotlinx.coroutines.runBlocking
 import io.restassured.module.kotlin.extensions.Given
 import io.restassured.module.kotlin.extensions.Then
 import io.restassured.module.kotlin.extensions.When
@@ -35,8 +34,7 @@ class E2EServiceReadinessTest {
 
     @Test
     @DisplayName("service is ready")
-    fun `should start the service`() : Unit =
-        runBlocking {
+    fun `service is ready`()  {
             Given {
                 hostIsIp(service.host)
                 port(service.getMappedPort(SERVICE_PORT))

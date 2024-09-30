@@ -110,7 +110,7 @@ tasks {
         testlogger {
             theme = ThemeType.MOCHA
             slowThreshold = 5000
-            showStandardStreams = false
+            showStandardStreams = true
             showFullStackTraces = false
             logLevel = LogLevel.QUIET
         }

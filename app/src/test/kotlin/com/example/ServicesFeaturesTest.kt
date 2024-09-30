@@ -7,10 +7,10 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
-@DisplayName("services features")
+@DisplayName("service features")
 class ServicesFeaturesTest {
     @Test
-    @DisplayName("ignores trailing slash in path")
+    @DisplayName("ignores trailing slash in all paths")
     fun testIgnoreTrailingSlash() =
         testApplication {
             application {

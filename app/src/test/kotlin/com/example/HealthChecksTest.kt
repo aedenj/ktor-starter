@@ -13,7 +13,7 @@ class HealthChecksTest {
     @DisplayName("startup path returns ok")
     fun testStartup() =
         testApplication {
-            val response = client.get("/readiness")
+            val response = client.get("/startup")
 
             assertThat(HttpStatusCode.OK).isEqualTo(response.status)
         }

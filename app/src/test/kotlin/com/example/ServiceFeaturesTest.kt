@@ -8,7 +8,7 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
 @DisplayName("service features")
-class ServicesFeaturesTest {
+class ServiceFeaturesTest {
     @Test
     @DisplayName("ignores trailing slash in all paths")
     fun testIgnoreTrailingSlash() =

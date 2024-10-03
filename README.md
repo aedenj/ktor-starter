@@ -23,6 +23,7 @@ sets up the following features:
 * The follow service feautures using ktor plugins are setup :
   * [Ignore trailing slashes](https://api.ktor.io/ktor-server/ktor-server-core/io.ktor.server.routing/-ignore-trailing-slash.html) in routes. (e.g. `foo/` and `foo` are treated the same)
   * [Default headers](https://ktor.io/docs/server-default-headers.html#configure)
+  * Response [compression](https://ktor.io/docs/server-compression.html)
   * Kubernetes style startup, readiness and liveness [health checks](https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/)
     using [Cohort](https://github.com/sksamuel/cohort).
  

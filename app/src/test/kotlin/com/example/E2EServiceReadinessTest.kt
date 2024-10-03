@@ -3,6 +3,7 @@ package com.example
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.hostIsIp
 import io.ktor.server.application.pluginOrNull
+import io.ktor.server.plugins.defaultheaders.DefaultHeaders
 import io.ktor.server.routing.IgnoreTrailingSlash
 import io.ktor.server.testing.testApplication
 import io.restassured.module.kotlin.extensions.Given
@@ -23,7 +24,7 @@ import org.testcontainers.utility.DockerImageName
  * and dependencies. The types of changes a readiness test can catch include:
  *
  * - Missing configuration
- * - Incorrect configuration to dependencies
+ * - Incorrect configuration of dependencies
  * - Missing service features. (e.g. Compression, DefaultHeaders, IgnoreTrailingSlash, etc.)
  */
 @DisplayName("e2e system readiness test")
@@ -63,6 +64,17 @@ class E2EServiceReadinessTest {
         testApplication {
             application {
                 assertThat(pluginOrNull(IgnoreTrailingSlash)).isNotNull()
+                    .withFailMessage("IgnoreTrailingSlash plugin is not installed")
+            }
+        }
+
+    @Test
+    @DisplayName("responds with default headers")
+    fun testDefaultHeaders() =
+        testApplication {
+            application {
+                assertThat(pluginOrNull(DefaultHeaders)).isNotNull()
+                    .withFailMessage("DefaultHeaders plugin is not installed")
             }
         }
 }

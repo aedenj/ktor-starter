@@ -36,6 +36,7 @@ dependencies {
         libs.kotlin.stdlib,
         libs.ktor.server.core,
         libs.ktor.server.netty,
+        libs.ktor.defaultheaders,
         libs.cohort,
         libs.logback,
     ).forEach { implementation(it) }

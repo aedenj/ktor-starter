@@ -19,10 +19,12 @@ sets up the following features:
 
 **Service** 
 * Application architecture that [favors grouping by feature](https://ktor.io/docs/server-application-structure.html#group_by_feature). 
-* Ignore trailing slashes in routes. (e.g. `foo/` and `foo` are treated the same)
-* Kubernetes style startup, readiness and liveness [health checks](https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/)
-  using [Cohort](https://github.com/sksamuel/cohort).
-* The following Kotlin quality plugins are setup: ktlint, detekt and kover 
+* The following Kotlin quality plugins are setup: ktlint, detekt and kover
+* The follow service feautures using ktor plugins are setup :
+  * [Ignore trailing slashes](https://api.ktor.io/ktor-server/ktor-server-core/io.ktor.server.routing/-ignore-trailing-slash.html) in routes. (e.g. `foo/` and `foo` are treated the same)
+  * [Default headers](https://ktor.io/docs/server-default-headers.html#configure)
+  * Kubernetes style startup, readiness and liveness [health checks](https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/)
+    using [Cohort](https://github.com/sksamuel/cohort).
  
 **Infrastructure**
 * GitHub workflows for CI/CD 

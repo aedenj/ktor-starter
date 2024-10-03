@@ -3,6 +3,7 @@ package com.example
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.hostIsIp
 import io.ktor.server.application.pluginOrNull
+import io.ktor.server.plugins.compression.Compression
 import io.ktor.server.plugins.defaultheaders.DefaultHeaders
 import io.ktor.server.routing.IgnoreTrailingSlash
 import io.ktor.server.testing.testApplication
@@ -75,6 +76,16 @@ class E2EServiceReadinessTest {
             application {
                 assertThat(pluginOrNull(DefaultHeaders)).isNotNull()
                     .withFailMessage("DefaultHeaders plugin is not installed")
+            }
+        }
+
+    @Test
+    @DisplayName("compress outgoing content")
+    fun testCompression() =
+        testApplication {
+            application {
+                assertThat(pluginOrNull(Compression)).isNotNull()
+                    .withFailMessage("Compression plugin is not installed")
             }
         }
 }

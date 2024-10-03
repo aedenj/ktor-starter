@@ -37,6 +37,7 @@ dependencies {
         libs.ktor.server.core,
         libs.ktor.server.netty,
         libs.ktor.defaultheaders,
+        libs.ktor.compression,
         libs.cohort,
         libs.logback,
     ).forEach { implementation(it) }

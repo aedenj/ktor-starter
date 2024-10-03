@@ -19,8 +19,8 @@ import org.testcontainers.utility.DockerImageName
 
 /**
  * The general goal of this system readiness test is to ensure that the system is ready to accept traffic. Revealing
- * simple failures severe enough to reject a prospective change in the context of all requisite components and dependencies.
- * The types of changes a readiness test can catch include:
+ * simple failures severe enough to reject a prospective change in the context of all requisite components
+ * and dependencies. The types of changes a readiness test can catch include:
  *
  * - Missing configuration
  * - Incorrect configuration to dependencies

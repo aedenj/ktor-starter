@@ -10,5 +10,17 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
 }
 
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+    }
+
+    versionCatalogs {
+        create("tegralLibs") {
+            from("guru.zoroark.tegral:tegral-catalog:0.0.4")
+        }
+    }
+}
+
 rootProject.name = "ktor-starter"
 include("app")

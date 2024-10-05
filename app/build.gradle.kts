@@ -39,6 +39,8 @@ dependencies {
         libs.ktor.defaultheaders,
         libs.ktor.compression,
         libs.cohort,
+        tegralLibs.openapi.ktor,
+        tegralLibs.openapi.ktorui,
         libs.logback,
     ).forEach { implementation(it) }
 

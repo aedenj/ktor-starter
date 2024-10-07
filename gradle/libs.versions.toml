@@ -2,7 +2,7 @@
 kotlin = "2.0.20"
 ktor = "2.3.12"
 junit-jupiter = "5.11.1"
-testcontainers = "1.20.1"
+testcontainers = "1.20.2"
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }

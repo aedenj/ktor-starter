@@ -10,6 +10,8 @@
 * [Up & Running](#up--running)
 * [Live Reload](#live-reload)
 * [Troubleshooting](#troubleshooting)
+* Additional Topics
+  * [Local Development with Minikube](https://github.com/aedenj/ktor-starter/wiki/Local-Development-with-Minikube)
 <!-- toc-end -->
 
 ## Overview
@@ -29,13 +31,13 @@ sets up the following features:
   * Swagger UI for API documentation using [Tegral's Ktor OpenAPI]( https://tegral.zoroark.guru/docs/modules/core/openapi/ktor)
   
 **Infrastructure**
-* GitHub workflows for CI/CD 
+* CI/CD setup using Skaffold to Minikube locally
 
 
 ## Pre-Requisites
 1. Docker
-
-2. [Gradle](https://gradle.org) - via your preferred development workflow.
+2. [Terraform](https://www.terraform.io) - for infrastructure as code.
+3. [Gradle](https://gradle.org) - via your preferred development workflow.
 
 ## Up & Running
 

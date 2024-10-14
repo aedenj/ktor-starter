@@ -12,7 +12,7 @@ ktor-defaultheaders = { module = "io.ktor:ktor-server-default-headers", version 
 ktor-compression = { module = "io.ktor:ktor-server-compression", version = "2.3.12" }
 
 cohort = { module = "com.sksamuel.cohort:cohort-ktor", version = "2.5.1" }
-logback = { module = "ch.qos.logback:logback-classic", version = "1.5.8" }
+logback = { module = "ch.qos.logback:logback-classic", version = "1.5.10" }
 
 testcontainers-bom = { module = "org.testcontainers:testcontainers-bom", version.ref = "testcontainers" }
 testcontainers-core = { module = "org.testcontainers:testcontainers"  }

@@ -44,8 +44,8 @@ sets up the following features:
 Let's first clone the repo and fire up our system,
 
 ```
-git clone git@github.com:aedenj/kotlin-microservice-starter.git ~/projects/kotlin-microservice-starter
-cd ~/projects/kotlin-microservice-starter;docker compose up
+git clone git@github.com:aedenj/ktor-starter.git ~/projects/ktor-starter
+cd ~/projects/ktor-starter;docker compose up
 ```
 
 This will start the app on port 8080. Navigate to [http://localhost:8080](http://localhost:8080) to see the app running.

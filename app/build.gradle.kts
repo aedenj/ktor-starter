@@ -64,7 +64,7 @@ dependencies {
  * stop before waiting a preWait duration configured by SuspendApp. This flag disables the shutdown hook
  * in favor of the SuspendApp graceful shutdown mechanism. See https://github.com/arrow-kt/suspendapp/issues/115
  */
-val jvmOpts =
+val baseJvmOpts =
     listOf(
         "-server",
         "-XX:+UseG1GC",
@@ -76,7 +76,7 @@ val jvmOpts =
 application {
     mainClass.set("com.example.GracefulNettyMain")
     version = "0.1"
-    applicationDefaultJvmArgs = jvmOpts
+    applicationDefaultJvmArgs = baseJvmOpts
 }
 
 tasks {
@@ -106,7 +106,7 @@ tasks {
         }
 
         container {
-            jvmFlags = jvmOpts
+            jvmFlags = baseJvmOpts + listOf("-XX:+UseContainerSupport", "-XX:MaxRAMPercentage=80")
             mainClass = application.mainClass.get()
         }
     }

@@ -14,7 +14,7 @@ import io.ktor.server.plugins.defaultheaders.DefaultHeaders
 import io.ktor.server.routing.IgnoreTrailingSlash
 import io.ktor.server.routing.routing
 
-fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
+fun main(args: Array<String>): Unit = GracefulNettyMain.main(args)
 
 fun Application.module() {
     install(IgnoreTrailingSlash)

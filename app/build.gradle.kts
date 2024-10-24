@@ -41,6 +41,8 @@ dependencies {
         libs.cohort,
         tegralLibs.openapi.ktor,
         tegralLibs.openapi.ktorui,
+        libs.arrow.suspendapp,
+        libs.arrow.suspendapp.ktor,
         libs.logback,
     ).forEach { implementation(it) }
 
@@ -57,16 +59,22 @@ dependencies {
     ).forEach { testImplementation(it) }
 }
 
+/**
+ * Since Ktor v2.3.0 shutdown hook was added to Ktor engines e.g. CIO and Netty, making Ktor server to
+ * stop before waiting a preWait duration configured by SuspendApp. This flag disables the shutdown hook
+ * in favor of the SuspendApp graceful shutdown mechanism. See https://github.com/arrow-kt/suspendapp/issues/115
+ */
 val jvmOpts =
     listOf(
         "-server",
-        "-Djava.awt.headless=true",
         "-XX:+UseG1GC",
+        "-Djava.awt.headless=true",
         "-Djava.security.egd=file:/dev/./urandom",
+        "-Dio.ktor.server.engine.ShutdownHook=false",
     ) + (System.getenv("APP_OPTS")?.split(" ") ?: emptyList())
 
 application {
-    mainClass.set("io.ktor.server.netty.EngineMain")
+    mainClass.set("com.example.GracefulNettyMain")
     version = "0.1"
     applicationDefaultJvmArgs = jvmOpts
 }
@@ -99,11 +107,21 @@ tasks {
 
         container {
             jvmFlags = jvmOpts
+            mainClass = application.mainClass.get()
         }
     }
 
     kover {
         reports {
+            filters {
+                excludes {
+                    classes(
+                        "com.example.GracefulNettyMain*",
+                        "com.example.Application\$main\$1",
+                    )
+                }
+            }
+
             verify {
                 rule {
                     minBound(90)
@@ -118,7 +136,7 @@ tasks {
         testlogger {
             theme = ThemeType.MOCHA
             slowThreshold = 5000
-            showStandardStreams = true
+            showStandardStreams = false
             showFullStackTraces = false
             logLevel = LogLevel.QUIET
         }

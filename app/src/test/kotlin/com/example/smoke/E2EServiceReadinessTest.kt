@@ -1,4 +1,4 @@
-package com.example
+package com.example.smoke
 
 import guru.zoroark.tegral.openapi.ktor.TegralOpenApiKtor
 import guru.zoroark.tegral.openapi.ktorui.TegralSwaggerUiKtor
@@ -16,10 +16,8 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.testcontainers.containers.GenericContainer
 import org.testcontainers.junit.jupiter.Container
 import org.testcontainers.junit.jupiter.Testcontainers
-import org.testcontainers.utility.DockerImageName
 
 /**
  * The general goal of this system readiness test is to ensure that the system is ready to accept traffic. Revealing
@@ -34,12 +32,8 @@ import org.testcontainers.utility.DockerImageName
 @Testcontainers
 class E2EServiceReadinessTest {
     companion object {
-        const val SERVICE_PORT = 8080
-
         @Container
-        private val service =
-            GenericContainer(DockerImageName.parse("ktor-starter-app:latest"))
-                .withExposedPorts(SERVICE_PORT)
+        private val service = ServiceContainer.create()
     }
 
     @AfterAll
@@ -53,7 +47,7 @@ class E2EServiceReadinessTest {
     fun `service is ready`() {
         Given {
             hostIsIp(service.host)
-            port(service.getMappedPort(SERVICE_PORT))
+            port(service.getMappedPort(ServiceContainer.PORT))
         } When {
             get("/readiness")
         } Then {
@@ -102,7 +96,7 @@ class E2EServiceReadinessTest {
 
             Given {
                 hostIsIp(service.host)
-                port(service.getMappedPort(SERVICE_PORT))
+                port(service.getMappedPort(ServiceContainer.PORT))
             } When {
                 get("/openapi")
             } Then {
@@ -121,7 +115,7 @@ class E2EServiceReadinessTest {
 
             Given {
                 hostIsIp(service.host)
-                port(service.getMappedPort(SERVICE_PORT))
+                port(service.getMappedPort(ServiceContainer.PORT))
             } When {
                 get("/swagger")
             } Then {

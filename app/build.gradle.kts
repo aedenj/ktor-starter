@@ -43,6 +43,8 @@ dependencies {
         tegralLibs.openapi.ktorui,
         libs.arrow.suspendapp,
         libs.arrow.suspendapp.ktor,
+        "com.sksamuel.hoplite:hoplite-core:2.8.2",
+        "com.sksamuel.hoplite:hoplite-hocon:2.8.2",
         libs.logback,
     ).forEach { implementation(it) }
 

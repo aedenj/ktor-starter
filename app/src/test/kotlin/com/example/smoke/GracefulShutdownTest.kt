@@ -1,5 +1,6 @@
 package com.example.smoke
 
+import com.example.Environment
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.hostIsIp
 import io.restassured.module.kotlin.extensions.Given
@@ -27,7 +28,7 @@ class GracefulShutdownTest {
         private val consumer = WaitingConsumer()
 
         @Container
-        private val service = ServiceContainer.create()
+        private val service = ServiceContainer.create(Environment.TEST)
     }
 
     @BeforeAll

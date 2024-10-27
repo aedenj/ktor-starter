@@ -1,20 +1,20 @@
 package com.example.config
 
-import com.sksamuel.hoplite.ConfigException
+import com.example.Environment
 import io.ktor.server.netty.NettyApplicationEngine
 import org.assertj.core.api.Assertions.assertThat
-import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
 
+@DisplayName("netty service config creation")
 class NettyServiceConfigTest {
     private lateinit var config: NettyServiceConfig
 
     @Test
-    @DisplayName("all fields are mapped with no overrides")
-    fun `all fields are mapped with no overrides`() {
-        config = NettyServiceConfig.create("no-overrides")
+    @DisplayName("all fields are mapped when local env has no override")
+    fun `all fields are mapped when local env has no overrides`() {
+        config = NettyServiceConfig.create(Environment.LOCAL)
 
         assertAll(
             { assertThat(config.deployment.connectionGroupSize).isEqualTo(10) },
@@ -36,9 +36,9 @@ class NettyServiceConfigTest {
     }
 
     @Test
-    @DisplayName("all fields are mapped with some overrides")
-    fun `all fields are mapped with some overrides`() {
-        config = NettyServiceConfig.create("with-overrides")
+    @DisplayName("all fields are mapped when test env has some overrides")
+    fun `all fields are mapped when test env has some overrides`() {
+        config = NettyServiceConfig.create(Environment.TEST)
 
         assertAll(
             { assertThat(config.deployment.connectionGroupSize).isEqualTo(15) },
@@ -60,19 +60,29 @@ class NettyServiceConfigTest {
     }
 
     @Test
-    @DisplayName("using a non-existent env throws")
-    fun `using a non-existent env throws`() {
-        assertThatThrownBy { NettyServiceConfig.create("non-existent") }
-            .isInstanceOf(ConfigException::class.java)
-            .hasMessageContaining("Could not find /application.non-existent.conf")
-    }
-
-    @Test
     @DisplayName("map to netty engine config")
     fun `map to netty engine config`() {
-        config = NettyServiceConfig.create("with-overrides")
-
-        val nettyConfig = NettyApplicationEngine.Configuration().apply { loadConfiguration(config.deployment) }
+        val nettyConfig =
+            NettyApplicationEngine.Configuration().apply {
+                loadConfiguration(
+                    NettyDeploymentConfig(
+                        connectionGroupSize = 15,
+                        workerGroupSize = 10,
+                        callGroupSize = 10,
+                        shutdownGracePeriod = 567L,
+                        shutdownTimeout = 999L,
+                        requestQueueLimit = 10,
+                        runningLimit = 10,
+                        shareWorkGroup = false,
+                        responseWriteTimeoutSeconds = 60,
+                        requestReadTimeoutSeconds = 60,
+                        tcpKeepAlive = true,
+                        maxInitialLineLength = 4096,
+                        maxHeaderSize = 8192,
+                        maxChunkSize = 16384,
+                    ),
+                )
+            }
 
         assertAll(
             { assertThat(nettyConfig.connectionGroupSize).isEqualTo(15) },
@@ -95,11 +105,24 @@ class NettyServiceConfigTest {
     @Test
     @DisplayName("map to netty engine config using all defaults")
     fun `map to netty engine config using all defaults`() {
-        config = NettyServiceConfig.create("no-overrides", "/application.empty.conf")
-
         val nettyConfig =
             NettyApplicationEngine.Configuration().apply {
-                loadConfiguration(config.deployment)
+                loadConfiguration(
+                    NettyDeploymentConfig(
+                        connectionGroupSize = null,
+                        workerGroupSize = null,
+                        callGroupSize = null,
+                        requestQueueLimit = null,
+                        runningLimit = null,
+                        shareWorkGroup = null,
+                        responseWriteTimeoutSeconds = null,
+                        requestReadTimeoutSeconds = null,
+                        tcpKeepAlive = null,
+                        maxInitialLineLength = null,
+                        maxHeaderSize = null,
+                        maxChunkSize = null,
+                    ),
+                )
             }
 
         assertAll(

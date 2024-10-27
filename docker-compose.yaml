@@ -8,6 +8,7 @@ services:
         - $PWD:/app
     working_dir: /app
     environment:
+      KTOR_ENV: "local"
       APP_OPTS: "-Dio.ktor.development=true -XX:+UseContainerSupport -XX:MaxRAMPercentage=80"
     command: [ "./gradlew", "run" ]
     restart: unless-stopped

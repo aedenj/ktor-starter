@@ -1,5 +1,6 @@
 package com.example.config
 
+import com.example.Environment
 import com.sksamuel.hoplite.ConfigAlias
 import com.sksamuel.hoplite.ConfigLoaderBuilder
 import com.sksamuel.hoplite.addResourceSource
@@ -9,18 +10,11 @@ data class NettyServiceConfig(
     @ConfigAlias("deployment") val deployment: NettyDeploymentConfig,
 ) {
     companion object {
-        fun create(env: String): NettyServiceConfig {
-            return create(env, "/application.conf")
-        }
-
-        fun create(
-            env: String,
-            baseConf: String,
-        ): NettyServiceConfig {
+        fun create(env: Environment): NettyServiceConfig {
             return ConfigLoaderBuilder.Companion
                 .default()
                 .addResourceSource("/application.$env.conf")
-                .addResourceSource(baseConf)
+                .addResourceSource("/application.conf")
                 .build()
                 .loadConfigOrThrow<NettyServiceConfig>(prefix = "ktor")
         }

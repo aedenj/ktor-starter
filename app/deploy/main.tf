@@ -25,6 +25,11 @@ resource "kubernetes_deployment" "app_deployment" {
           image = "${var.app_name}:latest"
           image_pull_policy = "Never"
 
+          env {
+            name = "KTOR_ENV"
+            value = var.env
+          }
+
           port {
             container_port = 8080
           }

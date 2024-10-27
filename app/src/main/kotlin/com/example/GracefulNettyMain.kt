@@ -4,6 +4,7 @@ import arrow.continuations.SuspendApp
 import arrow.fx.coroutines.resourceScope
 import com.example.config.NettyServiceConfig
 import com.example.config.loadConfiguration
+import io.ktor.server.config.tryGetString
 import io.ktor.server.engine.ApplicationEngine
 import io.ktor.server.engine.commandLineEnvironment
 import io.ktor.server.engine.embeddedServer
@@ -11,17 +12,13 @@ import io.ktor.server.netty.Netty
 import kotlinx.coroutines.awaitCancellation
 import kotlinx.coroutines.delay
 
-/**
- * Main function for starting the service with graceful shutdown using Netty. This class copies most of it's content
- * from the EngineMain class of Ktor, but adds graceful shutdown capabilities with Arrow's SuspendApp library.
- *
- */
 object GracefulNettyMain {
     @JvmStatic
     fun main(args: Array<String>): Unit =
         SuspendApp {
-            val env = commandLineEnvironment(args)
-            val config = NettyServiceConfig.create("test")
+            val engineEnv = commandLineEnvironment(args)
+            val env = Environment.valueOf(engineEnv.config.tryGetString("ktor.environment")!!.uppercase())
+            val config = NettyServiceConfig.create(env)
 
             /**
              * Unfortunately, the current helper method, named server, in the SuspendApp library that encapsulates
@@ -31,7 +28,9 @@ object GracefulNettyMain {
              */
             resourceScope {
                 install({
-                    embeddedServer(Netty, env) { loadConfiguration(config.deployment) }.apply(ApplicationEngine::start)
+                    embeddedServer(Netty, engineEnv) {
+                        loadConfiguration(config.deployment)
+                    }.apply(ApplicationEngine::start)
                 }) { engine, _ ->
                     engine.release(
                         config.deployment.shutdownDelay,
@@ -56,6 +55,7 @@ suspend fun ApplicationEngine.release(
         )
         delay(preWait)
     }
+
     environment.log.info("Shutting down HTTP server...")
     stop(grace, timeout)
     environment.log.info("HTTP server shutdown!")

@@ -1,5 +1,6 @@
 package com.example.smoke
 
+import com.example.Environment
 import guru.zoroark.tegral.openapi.ktor.TegralOpenApiKtor
 import guru.zoroark.tegral.openapi.ktorui.TegralSwaggerUiKtor
 import io.ktor.http.HttpStatusCode
@@ -33,7 +34,7 @@ import org.testcontainers.junit.jupiter.Testcontainers
 class E2EServiceReadinessTest {
     companion object {
         @Container
-        private val service = ServiceContainer.create()
+        private val service = ServiceContainer.create(Environment.LOCAL)
     }
 
     @AfterAll

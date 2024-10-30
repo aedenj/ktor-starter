@@ -33,13 +33,14 @@ sets up the following features:
   with the ability to load configuration from a file using [Hoplite](https://github.com/sksamuel/hoplite).
   
 **Infrastructure**
-* CI/CD setup using Skaffold to Minikube locally
+* Multi-environment Terraform setup using Terragrunt
 
 
 ## Pre-Requisites
 1. Docker
 2. [Terraform](https://www.terraform.io) - for infrastructure as code.
-3. [Gradle](https://gradle.org) - via your preferred development workflow.
+3. [Terragrunt](https://terragrunt.gruntwork.io/) - for managing multiple Terraform environments.
+4. [Gradle](https://gradle.org) - via your preferred development workflow.
 
 ## Up & Running
 

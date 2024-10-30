@@ -1,4 +1,3 @@
-
 resource "minikube_cluster" "docker" {
   cluster_name = "minikube" # ensure there's a profile with this name so kubectl can access the cluster
   driver       = "docker"
@@ -15,6 +14,7 @@ resource "minikube_cluster" "docker" {
 
   provisioner "local-exec" {
     command = <<EOT
+      # Wait for the ingress controller to be ready, which isn't covered by the "wait" option above
       while [[ $(kubectl get endpointslices -n ingress-nginx -l kubernetes.io/service-name="ingress-nginx-controller-admission" -o json | \
                  jq '[.items[].endpoints[] | select(.conditions.ready != true)] | length') -ne 0 ]]; do
           echo "Waiting for all ingress endpoints to be ready..."

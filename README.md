@@ -42,11 +42,14 @@ sets up the following features:
 3. [Terragrunt](https://terragrunt.gruntwork.io/) - for managing multiple Terraform environments.
 4. [Gradle](https://gradle.org) - via your preferred development workflow.
 
+I typically manage installations using [asdf](https://asdf-vm.com/), but to each their own. If you do use,
+asdf, there is a `.tool-versions` file in the root of the project that you can use for installation.
+
 ## Up & Running
 
 Let's first clone the repo and fire up our system,
 
-```
+```shell
 git clone git@github.com:aedenj/ktor-starter.git ~/projects/ktor-starter
 cd ~/projects/ktor-starter;docker compose up
 ```

@@ -1,9 +1,6 @@
 locals {
-  # Parse the file path we're in to read the env name: e.g., env
-  # will be "dev" in the dev folder, "stage" in the stage folder,
-  # etc.
-  parsed = regex(".*/infra/(?P<env>.*?)/.*", get_terragrunt_dir())
-  env    = local.parsed.env
+  system = "archegos"
+  region = "us-east-1"
 }
 
 remote_state {
@@ -13,9 +10,10 @@ remote_state {
     if_exists = "overwrite_terragrunt"
   }
   config = {
-    bucket = "terraform-state-${local.env}"
+    bucket = "terraform-state-${local.system}-${local.region}"
     key = "${path_relative_to_include()}/terraform.tfstate"
     encrypt = false
-    region = "us-west-2"
+    region = "${local.region}"
+    profile = "default"
   }
 }

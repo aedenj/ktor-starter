@@ -42,8 +42,12 @@ out/
 .DS_Store
 
 
-# Local .terraform directories
+### Terraform ###
 **/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
 
 # Ignore variables files
 *.auto.tfvars
@@ -58,3 +62,14 @@ out/
 .terraformrc
 terraform.rc
 
+# Ignore transient lock info files created by terraform apply
+.terraform.tfstate.lock.info
+
+# Crash log files
+crash.log
+crash.*.log
+
+### Terragrunt ###
+.terraform.lock.hcl
+terragrunt.iml
+.terragrunt-cache

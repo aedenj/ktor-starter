@@ -31,8 +31,8 @@ generate "provider" {
 
       default_tags {
         tags = {
-            Organization = "${local.org}"
-            Environment = "${local.env}"
+            Organization = "${title(local.org)}"
+            Environment = "${title(local.env)}"
             ManagedBy = "Terraform"
             Deployment = "Terragrunt"
         }

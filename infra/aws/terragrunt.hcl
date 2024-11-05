@@ -1,9 +1,10 @@
 locals {
-  env_vars = read_terragrunt_config(find_in_parent_folders("env.hcl"))
+  deployment = get_env("DEPLOYMENT")
+  deploy_vars = read_terragrunt_config(find_in_parent_folders("deployments/${local.deployment}.hcl"))
 
-  org = "archegos"
-  region = "us-east-1"
-  env = local.env_vars.locals.environment
+  org = local.deploy_vars.locals.organization
+  region = local.deploy_vars.locals.region
+  env = local.deploy_vars.locals.environment
   resource_prefix = "${local.org}-${local.region}-${local.env}"
 }
 
@@ -15,7 +16,7 @@ remote_state {
   }
   config = {
     bucket = "terraform-state-${local.org}-${local.region}"
-    key = "${path_relative_to_include()}/terraform.tfstate"
+    key = "${path_relative_to_include()}/${local.env}/terraform.tfstate"
     encrypt = false
     region = "${local.region}"
     profile = "default"

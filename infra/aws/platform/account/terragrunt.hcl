@@ -7,7 +7,7 @@ terraform {
 }
 
 include "vpc" {
-  path = "${dirname(find_in_parent_folders())}/platform/common/vpc.hcl"
+  path = "${dirname(find_in_parent_folders())}/common/vpc.hcl"
   expose = true
 }
 

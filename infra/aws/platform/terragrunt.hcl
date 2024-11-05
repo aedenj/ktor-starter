@@ -1,6 +1,6 @@
 locals {
   deployment = get_env("DEPLOYMENT")
-  deploy_vars = read_terragrunt_config(find_in_parent_folders("deployments/${local.deployment}.hcl"))
+  deploy_vars = read_terragrunt_config("${get_parent_terragrunt_dir()}/deployments/${local.deployment}.hcl")
 
   org = local.deploy_vars.locals.organization
   region = local.deploy_vars.locals.region

@@ -4,8 +4,7 @@ locals {
 
   org = local.deploy_vars.locals.organization
   region = local.deploy_vars.locals.region
-  env = local.deploy_vars.locals.environment
-  resource_prefix = "${local.org}-${local.region}-${local.env}"
+  env = local.deploy_vars.locals.env
 }
 
 remote_state {
@@ -16,7 +15,7 @@ remote_state {
   }
   config = {
     bucket = "terraform-state-${local.org}-${local.region}"
-    key = "${path_relative_to_include()}/${local.env}/terraform.tfstate"
+    key = "${local.env}/platform/${path_relative_to_include()}/terraform.tfstate"
     encrypt = false
     region = "${local.region}"
     profile = "default"

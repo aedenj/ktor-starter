@@ -1,11 +1,5 @@
 include "root" {
   path = find_in_parent_folders()
-  expose = true
-}
-
-include "vpc" {
-  path = "${dirname(find_in_parent_folders())}/common/vpc.hcl"
-  expose = true
 }
 
 terraform {
@@ -17,25 +11,41 @@ dependency "account" {
 }
 
 locals {
-  cidr = include.vpc.locals.cidr
-  zone_count = include.vpc.locals.zone_count
+  cidr       = "10.0.0.0/16"
+  zone_count = 3
 }
 
 inputs = {
-  name = "${include.root.locals.resource_prefix}"
+  name = "${dependency.account.outputs.resource_prefix}-vpc"
   cidr = local.cidr
 
-  azs             = slice(dependency.account.outputs.available_azs, 0, local.zone_count)
+  azs             = slice(dependency.account.outputs.available_azs, 0, 3)
   private_subnets = [
-      for k, v in slice(dependency.account.outputs.available_azs, 0, local.zone_count):
+      for k, v in slice(dependency.account.outputs.available_azs, 0, 3):
         cidrsubnet(local.cidr, 8, k + 1)
   ]
+  private_subnet_names = [
+    for k, v in slice(dependency.account.outputs.available_azs, 0, 3):
+      "${dependency.account.outputs.resource_prefix}-private-subnet-${v}"
+  ]
+  private_subnet_tags = { "kubernetes.io/role/internal-elb" = 1 }
+
   public_subnets = [
-    for k, v in slice(dependency.account.outputs.available_azs, 0, local.zone_count):
+    for k, v in slice(dependency.account.outputs.available_azs, 0, 3):
         cidrsubnet(local.cidr, 8, k + 101)
   ]
+  public_subnet_names = [
+    for k, v in slice(dependency.account.outputs.available_azs, 0, 3):
+    "${dependency.account.outputs.resource_prefix}-public-subnet-${v}"
+  ]
+  public_subnet_tags = { "kubernetes.io/role/elb" = 1 }
+  map_public_ip_on_launch = true
 
-  enable_nat_gateway = include.vpc.locals.enable_nat_gateway
-  enable_vpn_gateway = include.vpc.locals.enable_vpn_gateway
-  enable_public_redshift = include.vpc.locals.enable_public_redshift
+  enable_nat_gateway   = true
+  single_nat_gateway   = true
+
+  enable_dns_support   = true
+  enable_dns_hostnames = true
+
+  create_database_subnet_group  = false
 }

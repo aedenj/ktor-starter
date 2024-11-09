@@ -1,16 +1,20 @@
 include "root" {
   path = find_in_parent_folders()
-}
-
-terraform {
-  source = "../../modules/account"
-}
-
-include "vpc" {
-  path = "${dirname(find_in_parent_folders())}/common/vpc.hcl"
   expose = true
 }
 
+locals {
+  org = include.root.locals.org
+  region = include.root.locals.region
+  env = include.root.locals.env
+}
+
+terraform {
+  source = ".//terraform"
+}
+
 inputs = {
-  min_required_zones = include.vpc.locals.zone_count
+    org = local.org
+    env = local.env
+    region = local.region
 }

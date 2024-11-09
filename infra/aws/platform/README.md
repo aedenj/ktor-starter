@@ -16,7 +16,8 @@
 
 Run the following command to retrieve the access credentials for your cluster and configure `kubectl`, 
 ```shell
-awsd eks --region us-east-1 update-kubeconfig --name $(DEPLOYMENT="archegos-dev-us-east-1" terragrunt output --terragrunt-working-dir infra/aws/platform/eks --terragrunt-non-interactive -raw cluster_name)
+awsd eks --region us-east-1 update-kubeconfig \
+  --name $(DEPLOYMENT="archegos-dev-us-east-1" terragrunt output --terragrunt-working-dir infra/aws/platform/eks -raw cluster_name)
 ```
 
 Let's verify that we can access the cluster by running `kubectl cluster-info`. You should see output similiar to,

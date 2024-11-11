@@ -7,11 +7,11 @@ terraform {
 }
 
 dependency "account" {
-  config_path = "../account"
+  config_path = "../../account"
 }
 
 dependency "vpc" {
-  config_path = "../vpc"
+  config_path = "../../vpc"
 }
 
 inputs = {
@@ -25,6 +25,18 @@ inputs = {
   subnet_ids                   = concat(dependency.vpc.outputs.private_subnets, dependency.vpc.outputs.public_subnets)
   control_plane_subnet_ids     = dependency.vpc.outputs.private_subnets
   enable_irsa = false
+
+  cluster_addons = {
+    eks-pod-identity-agent = {
+      most_recent = true
+    }
+    kube-proxy = {
+      most_recent = true
+    }
+    coredns = {
+      most_recent = true
+    }
+  }
 
   eks_managed_node_group_defaults = {
     ami_type                   = "AL2_x86_64"

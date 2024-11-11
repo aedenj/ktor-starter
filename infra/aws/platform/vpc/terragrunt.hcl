@@ -28,7 +28,10 @@ inputs = {
     for k, v in slice(dependency.account.outputs.available_azs, 0, 3):
       "${dependency.account.outputs.resource_prefix}-private-subnet-${v}"
   ]
-  private_subnet_tags = { "kubernetes.io/role/internal-elb" = 1 }
+  private_subnet_tags = {
+    "kubernetes.io/role/internal-elb" = 1
+    "kubernetes.io/cluster/${dependency.account.outputs.resource_prefix}-vpc" = "shared"
+  }
 
   public_subnets = [
     for k, v in slice(dependency.account.outputs.available_azs, 0, 3):
@@ -38,7 +41,10 @@ inputs = {
     for k, v in slice(dependency.account.outputs.available_azs, 0, 3):
     "${dependency.account.outputs.resource_prefix}-public-subnet-${v}"
   ]
-  public_subnet_tags = { "kubernetes.io/role/elb" = 1 }
+  public_subnet_tags = {
+    "kubernetes.io/role/elb" = 1
+    "kubernetes.io/cluster/${dependency.account.outputs.resource_prefix}-vpc" = "shared"
+  }
   map_public_ip_on_launch = true
 
   enable_nat_gateway   = true

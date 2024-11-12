@@ -19,7 +19,12 @@ output "resource_prefix" {
 }
 
 output "available_azs" {
-  value = data.aws_availability_zones.available.names
   description = "The zones available to the account"
+  value = data.aws_availability_zones.available.names
+}
+
+output "caller_arn" {
+  description = "The caller identity"
+  value = data.aws_caller_identity.current.arn
 }
 

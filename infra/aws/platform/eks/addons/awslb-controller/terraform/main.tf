@@ -35,6 +35,7 @@ module "aws_lb_controller_pod_identity" {
 # For more, https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller
 module "eks_blueprints_addon" {
   source = "aws-ia/eks-blueprints-addon/aws"
+  version = "1.1.1"
 
   name        = "aws-load-balancer-controller"
   description = "A Helm chart to deploy aws-load-balancer-controller"

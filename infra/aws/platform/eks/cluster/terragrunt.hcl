@@ -36,6 +36,9 @@ inputs = {
     coredns = {
       most_recent = true
     }
+    vpc-cni = {
+      most_recent = true
+    }
   }
 
   eks_managed_node_group_defaults = {

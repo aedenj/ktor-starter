@@ -1,3 +1,11 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "5.54.1"
+    }
+  }
+}
 provider "helm" {
   kubernetes {
     host                   = var.cluster_endpoint
@@ -34,30 +42,25 @@ module "aws_vpc_cni_ipv4_pod_identity" {
   }
 }
 
+data "aws_eks_addon_version" "latest" {
+  addon_name         = local.addon_name
+  kubernetes_version = var.cluster_version
+  most_recent        = true
+}
+
 # For more, https://github.com/aws/amazon-vpc-cni-k8s
-module "eks_blueprints_addon" {
-  source = "aws-ia/eks-blueprints-addon/aws"
+resource "aws_eks_addon" "aws_vpc_cni" {
+  cluster_name = var.cluster_name
+  addon_name   = local.addon_name
+  addon_version = data.aws_eks_addon_version.latest.version
 
-  name        = "aws-vpc-cni"
-  description = "A Helm chart to deploy aws-vpc-cni"
+  resolve_conflicts_on_create = "OVERWRITE"
+  resolve_conflicts_on_update = "OVERWRITE"
 
-  chart       = "aws-vpc-cni"
-  chart_version = "1.18.6"
-  repository = "https://aws.github.io/eks-charts"
-  namespace   = local.namespace
-  create_namespace = false
-
-  wait                       = true
-  wait_for_jobs              = true
-
-  set = [
-    {
-      name  = "serviceAccount.create"
-      value = true
-    },
-    {
-      name  = "serviceAccount.name"
-      value = var.service_account
+  configuration_values = jsonencode({
+    serviceAccount = {
+      name = var.service_account
+      create = true
     }
-  ]
+  })
 }

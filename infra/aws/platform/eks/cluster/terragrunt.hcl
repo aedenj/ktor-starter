@@ -26,6 +26,7 @@ inputs = {
   control_plane_subnet_ids     = dependency.vpc.outputs.private_subnets
   enable_irsa = false
 
+  # For more, https://docs.aws.amazon.com/eks/latest/userguide/eks-add-ons.html
   cluster_addons = {
     eks-pod-identity-agent = {
       most_recent = true

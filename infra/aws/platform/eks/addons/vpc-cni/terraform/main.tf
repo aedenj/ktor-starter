@@ -49,6 +49,7 @@ data "aws_eks_addon_version" "latest" {
 }
 
 # For more, https://github.com/aws/amazon-vpc-cni-k8s
+# https://github.com/aws/eks-charts/tree/master/stable/aws-vpc-cni#adopting-the-existing-aws-node-resources-in-an-eks-cluster
 resource "aws_eks_addon" "aws_vpc_cni" {
   cluster_name = var.cluster_name
   addon_name   = local.addon_name

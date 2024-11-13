@@ -7,11 +7,11 @@ terraform {
 }
 
 dependency "account" {
-  config_path = "../../account"
+  config_path = "${dirname(find_in_parent_folders())}/account"
 }
 
 dependency "vpc" {
-  config_path = "../../vpc"
+  config_path = "${dirname(find_in_parent_folders())}/vpc"
 }
 
 inputs = {

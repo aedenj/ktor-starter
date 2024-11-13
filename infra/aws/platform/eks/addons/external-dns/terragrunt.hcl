@@ -3,11 +3,11 @@ include "root" {
 }
 
 dependency "vpc" {
-  config_path = "../../../vpc"
+  config_path = "${dirname(find_in_parent_folders())}/vpc"
 }
 
 dependency "eks" {
-  config_path = "../../cluster"
+  config_path = "${dirname(find_in_parent_folders())}/eks/cluster"
 }
 
 terraform {

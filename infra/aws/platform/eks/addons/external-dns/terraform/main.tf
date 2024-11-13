@@ -33,6 +33,10 @@ module "external_dns_pod_identity" {
   }
 }
 
+/**
+  AWS Tutorial: https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md
+  Docs: https://kubernetes-sigs.github.io/external-dns/latest/
+ */
 module "external_dns" {
   source  = "aws-ia/eks-blueprints-addon/aws"
   version = "1.1.1"
@@ -45,7 +49,7 @@ module "external_dns" {
   chart            = "external-dns"
   chart_version    = "1.15.0"
   repository       = "https://kubernetes-sigs.github.io/external-dns/"
-  values           = ["provider: aws"]
+  values           = ["provider: aws", "source: ingress"]
 
   wait                       = true
   wait_for_jobs              = true

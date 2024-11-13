@@ -7,7 +7,7 @@ terraform {
 }
 
 dependency "account" {
-  config_path = "../account"
+  config_path = "${dirname(find_in_parent_folders())}/account"
 }
 
 locals {
@@ -43,7 +43,7 @@ inputs = {
   ]
   public_subnet_tags = {
     "kubernetes.io/role/elb" = 1
-    "kubernetes.io/cluster/${dependency.account.outputs.resource_prefix}-vpc" = "shared"
+    "kubernetes.io/cluster/${dependency.account.outputs.resource_prefix}-eks" = "shared"
   }
   map_public_ip_on_launch = true
 

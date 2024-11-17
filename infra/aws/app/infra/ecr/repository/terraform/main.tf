@@ -28,15 +28,3 @@ module "ecr" {
 
   repository_force_delete = true
 }
-
-# module "ecr_registry" {
-#   source  = "terraform-aws-modules/ecr/aws"
-#   version = "2.3.0"
-#
-#   repository_name = var.repository_name
-#   create_repository = false
-#
-#   image_scanning_configuration = {
-#     scan_on_push = true
-#   }
-# }

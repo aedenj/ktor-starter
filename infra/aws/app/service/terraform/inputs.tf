@@ -8,6 +8,10 @@ variable "namespace" {
   type = string
 }
 
+variable "app_name" {
+  description = "The name of the app"
+  type = string
+}
 variable "secret_name" {
   description = "The name of the secret"
   type = string

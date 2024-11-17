@@ -15,7 +15,7 @@ provider "kubernetes" {
 
 resource "kubernetes_deployment" "app_deployment" {
   metadata {
-    name = "ktor-starter-app"
+    name = var.app_name
     namespace = var.namespace
   }
 
@@ -24,14 +24,14 @@ resource "kubernetes_deployment" "app_deployment" {
 
     selector {
       match_labels = {
-        name = "ktor-starter-app"
+        name = var.app_name
       }
     }
 
     template {
       metadata {
         labels = {
-          name = "ktor-starter-app"
+          name = var.app_name
         }
       }
 
@@ -41,7 +41,7 @@ resource "kubernetes_deployment" "app_deployment" {
         }
 
         container {
-          name  = "ktor-starter-app"
+          name  = var.app_name
           image = "541898866282.dkr.ecr.us-east-1.amazonaws.com/ktor-starter-app:latest"
           image_pull_policy = "Always"
 
@@ -59,16 +59,15 @@ resource "kubernetes_deployment" "app_deployment" {
   }
 }
 
-
 resource "kubernetes_service" "app_service" {
   metadata {
-    name = "ktor-starter-app-service"
+    name = "${var.app_name}-service"
     namespace = var.namespace
   }
 
   spec {
     selector = {
-      name = "ktor-starter-app"
+      name = var.app_name
     }
 
     type = "NodePort"
@@ -79,11 +78,13 @@ resource "kubernetes_service" "app_service" {
       protocol = "TCP"
     }
   }
+
+  wait_for_load_balancer = true
 }
 
 resource "kubernetes_ingress_v1" "app_ingress" {
   metadata {
-    name = "ktor-starter-app-ingress"
+    name = "${var.app_name}-ingress"
     namespace = var.namespace
     annotations = {
       "kubernetes.io/ingress.class" = "alb"
@@ -105,7 +106,7 @@ resource "kubernetes_ingress_v1" "app_ingress" {
 
           backend {
             service {
-              name = "ktor-starter-app-service"
+              name = "${var.app_name}-service"
 
               port {
                 number = 80
@@ -116,4 +117,6 @@ resource "kubernetes_ingress_v1" "app_ingress" {
       }
     }
   }
+
+  wait_for_load_balancer = true
 }

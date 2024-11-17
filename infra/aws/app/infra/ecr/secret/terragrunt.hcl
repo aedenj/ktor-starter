@@ -3,6 +3,10 @@ include "root" {
   expose = true
 }
 
+include "kube_provider" {
+  path = "${dirname(find_in_parent_folders())}/common/kube-provider.hcl"
+}
+
 terraform {
   source = ".//terraform"
 }

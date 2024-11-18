@@ -6,6 +6,10 @@ include "helm_provider" {
   path = "${dirname(find_in_parent_folders())}/common/helm-provider.hcl"
 }
 
+include "kube_provider" {
+  path = "${dirname(find_in_parent_folders())}/common/kube-provider.hcl"
+}
+
 dependency "vpc" {
   config_path = "${dirname(find_in_parent_folders())}/vpc"
 }

@@ -6,4 +6,5 @@ locals {
   cluster_name = "archegos-dev-eks"
   app_name = "ktor-starter-app"
   namespace = "banging-system"
+  domain = "aedenjameson.com"
 }

@@ -89,7 +89,7 @@ resource "kubernetes_ingress_v1" "app_ingress" {
     annotations = {
       "kubernetes.io/ingress.class" = "alb"
       "alb.ingress.kubernetes.io/scheme" = "internet-facing"
-      "external-dns.alpha.kubernetes.io/hostname" = "aedenjameson.com"
+      "external-dns.alpha.kubernetes.io/hostname" = var.domain
     }
   }
 
@@ -97,7 +97,7 @@ resource "kubernetes_ingress_v1" "app_ingress" {
     ingress_class_name = "alb"
 
     rule {
-      host = "aedenjameson.com"
+      host = var.domain
 
       http {
         path {
@@ -120,3 +120,4 @@ resource "kubernetes_ingress_v1" "app_ingress" {
 
   wait_for_load_balancer = true
 }
+

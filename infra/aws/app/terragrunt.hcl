@@ -9,6 +9,7 @@ locals {
   app_name = local.deploy_vars.locals.app_name
   cluster_name = local.deploy_vars.locals.cluster_name
   namespace = local.deploy_vars.locals.namespace
+  domain = local.deploy_vars.locals.domain
 }
 
 remote_state {

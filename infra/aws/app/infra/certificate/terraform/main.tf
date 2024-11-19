@@ -1,31 +1,15 @@
-resource "kubernetes_manifest" "app_certificate" {
-  manifest = {
-    apiVersion = "cert-manager.io/v1"
-    kind       = "Certificate"
-    metadata = {
-      name = "${var.app_name}-certificate"
-      namespace = var.namespace
-    }
+data "aws_route53_zone" "aedenjameson_com" {
+  name = var.domain
+  private_zone = false
+}
 
-    spec = {
-      secretName = "${var.app_name}-certificate"
-      revisionHistoryLimit = 1
-      privateKey = {
-        rotationPolicy = "Always"
-      }
-      commonName = var.domain
-      dnsNames = [
-          var.domain
-      ]
-      usages = [
-        "server auth",
-        "key encipherment",
-        "digital signature"
-      ]
-      issuerRef = {
-          name = "selfsigned"
-          kind = "ClusterIssuer"
-      }
-    }
-  }
+module "acm" {
+  source  = "terraform-aws-modules/acm/aws"
+  version = "~> 4.0"
+
+  domain_name = var.domain
+  zone_id     = data.aws_route53_zone.aedenjameson_com.zone_id
+
+  subject_alternative_names = ["www.${var.domain}"]
+  validation_method         = "DNS"
 }

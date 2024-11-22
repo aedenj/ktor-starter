@@ -14,6 +14,10 @@ dependency "vpc" {
   config_path = "${dirname(find_in_parent_folders())}/vpc"
 }
 
+locals {
+  eks_admin_user = "archegos-admin"
+}
+
 inputs = {
   cluster_name                 = "${dependency.account.outputs.resource_prefix}-eks"
   cluster_version              = "1.31"
@@ -27,6 +31,21 @@ inputs = {
   enable_irsa = false
 
   create_cloudwatch_log_group = false
+
+  access_entries = {
+    archegos-admin = {
+      principal_arn = "arn:aws:iam::${dependency.account.outputs.account_id}:user/${local.eks_admin_user}"
+      user_name = local.eks_admin_user
+      policy_associations = {
+        eks-admin = {
+          policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+          access_scope = {
+            type = "cluster"
+          }
+        }
+      }
+    }
+  }
 
   # For more, https://docs.aws.amazon.com/eks/latest/userguide/eks-add-ons.html
   cluster_addons = {

@@ -28,3 +28,8 @@ output "caller_arn" {
   value = data.aws_caller_identity.current.arn
 }
 
+output "account_id" {
+  description = "The account ID"
+  value = data.aws_caller_identity.current.account_id
+}
+

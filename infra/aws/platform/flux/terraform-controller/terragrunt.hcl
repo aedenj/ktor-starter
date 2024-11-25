@@ -7,7 +7,7 @@ include "helm_provider" {
 }
 
 dependencies {
-  paths = ["../base"]
+  paths = ["${dirname(find_in_parent_folders())}/flux/base"]
 }
 
 dependency "eks" {

@@ -36,6 +36,7 @@ terraform {
     commands = [
       "init",
       "apply",
+      "destroy",
       "refresh",
       "import",
       "plan",
@@ -54,5 +55,5 @@ inputs = {
   cluster_endpoint = dependency.eks.outputs.cluster_endpoint
   cluster_certificate_authority_data = dependency.eks.outputs.cluster_certificate_authority_data
   github_org = "archegos-solutions"
-  github_repository = "platform"
+  github_repository = "fluxcd"
 }

@@ -21,7 +21,9 @@ sets up the following features:
 
 **Service** 
 * Application architecture that [favors grouping by feature](https://ktor.io/docs/server-application-structure.html#group_by_feature). 
-* The follow service feautures using ktor plugins are setup :
+* Supplement [Ktor's command line configuration](https://ktor.io/docs/server-configuration-file.html#command-line) with [Hoplite](https://github.com/sksamuel/hoplite) to provide a more complete
+  solution for achieving a [12 Factor App](https://12factor.net/config).
+* The following service features using ktor plugins are setup :
   * [Ignore trailing slashes](https://api.ktor.io/ktor-server/ktor-server-core/io.ktor.server.routing/-ignore-trailing-slash.html) in routes. (e.g. `foo/` and `foo` are treated the same)
   * [Default headers](https://ktor.io/docs/server-default-headers.html#configure)
   * Response [compression](https://ktor.io/docs/server-compression.html)
@@ -29,8 +31,6 @@ sets up the following features:
     using [Cohort](https://github.com/sksamuel/cohort).
   * Swagger UI for API documentation using [Tegral's Ktor OpenAPI]( https://tegral.zoroark.guru/docs/modules/core/openapi/ktor)
 * The following Kotlin quality plugins are setup: ktlint, detekt and kover
-* Supplement [Ktor's command line configuration](https://ktor.io/docs/server-configuration-file.html#command-line)
-  with the ability to load configuration from a file using [Hoplite](https://github.com/sksamuel/hoplite).
   
 **Infrastructure**
 * Multi-environment Terraform setup using Terragrunt

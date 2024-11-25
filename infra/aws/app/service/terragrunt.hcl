@@ -11,6 +11,14 @@ terraform {
   source = ".//terraform"
 }
 
+dependencies {
+  paths = [
+    "../infra/ecr/repository",
+    "../infra/ecr/secret",
+    "../infra/certificate",
+  ]
+}
+
 dependency "secret" {
   config_path = "../infra/ecr/secret"
 }

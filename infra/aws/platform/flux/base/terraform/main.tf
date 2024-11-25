@@ -23,6 +23,16 @@ provider "github" {
   token = var.github_pat
 }
 
+resource "github_repository" "fluxcd" {
+  name        = var.github_repository
+  description = "The home of Flux app definitions"
+
+  visibility = "public"
+  license_template = "mit"
+  gitignore_template = "Terraform"
+  has_issues = true
+}
+
 resource "tls_private_key" "flux" {
   algorithm   = "ECDSA"
   ecdsa_curve = "P256"
@@ -30,7 +40,7 @@ resource "tls_private_key" "flux" {
 
 resource "github_repository_deploy_key" "this" {
   title      = "Flux"
-  repository = var.github_repository
+  repository = github_repository.fluxcd.name
   key        = tls_private_key.flux.public_key_openssh
   read_only  = "false"
 }

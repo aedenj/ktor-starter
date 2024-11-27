@@ -1,5 +1,5 @@
 data "aws_ecr_authorization_token" "value" {
-  registry_id = module.ecr.registry_id
+  registry_id = module.ecr.repository_registry_id
 
   depends_on = [
     module.ecr

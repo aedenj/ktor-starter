@@ -9,7 +9,7 @@ resource "kubernetes_manifest" "ktor_starter_infra_tf" {
     spec = {
       interval = "1m"
       approvePlan =  "auto"
-      path = "./infra"
+      path = "./infra/aws/appV2/infra"
       sourceRef = {
         kind = "GitRepository"
         name = "ktor-starter"
@@ -38,6 +38,18 @@ resource "kubernetes_manifest" "ktor_starter_infra_tf" {
             encrypt                     = false
           }
         EOF
+      }
+
+      runnerPodTemplate = {
+        spec = {
+          envFrom = [
+            {
+              secretRef = {
+                name = "aws-credentials"
+              }
+            }
+          ]
+        }
       }
     }
   }

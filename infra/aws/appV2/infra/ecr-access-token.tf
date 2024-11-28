@@ -24,7 +24,7 @@ locals {
 resource "kubernetes_secret" "app_secret" {
   metadata {
     name      = "ktor-starter-app-secret"
-    namespace = "ktor-starter"
+    namespace = "flux-system"
   }
 
   data = {

@@ -7,6 +7,7 @@ resource "kubernetes_manifest" "ktor_starter_infra_tf" {
       namespace = "flux-system"
     }
     spec = {
+      destroy = false
       interval = "1m"
       approvePlan =  "auto"
       path = "./infra/aws/appV2/infra"

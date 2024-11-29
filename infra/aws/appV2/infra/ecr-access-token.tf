@@ -8,14 +8,14 @@ data "aws_ecr_authorization_token" "value" {
 
 locals {
   username          = "AWS"
-  password          = data.aws_ecr_authorization_token.value.authorization_token
+  password          = data.aws_ecr_authorization_token.value.password
   registry_endpoint = data.aws_ecr_authorization_token.value.proxy_endpoint
   docker_config_json = jsonencode({
     "auths" = {
       "${local.registry_endpoint}" = {
         "username" = local.username
         "password" = local.password
-        "auth"     = base64encode("${local.username}:${local.password}")
+        "auth"     = data.aws_ecr_authorization_token.value.authorization_token
       }
     }
   })

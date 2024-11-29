@@ -16,7 +16,6 @@ locals {
         "username" = local.username
         "password" = local.password
         "auth"     = base64encode("${local.username}:${local.password}")
-        "email"    = "none"
       }
     }
   })

@@ -4,10 +4,10 @@ resource "kubernetes_manifest" "ktor_starter_infra_tf" {
     kind       = "Terraform"
     metadata = {
       name      = "ktor-starter-infra"
-      namespace = "flux-system"
+      namespace = "ktor-starter"
     }
     spec = {
-      destroy = false
+      destroy = true
       interval = "1m"
       approvePlan =  "auto"
       path = "./infra/aws/appV2/infra"

@@ -4,7 +4,7 @@ resource "kubernetes_manifest" "ktor_starter_infra_tf" {
     kind       = "Terraform"
     metadata = {
       name      = "ktor-starter-infra"
-      namespace = "ktor-starter"
+      namespace = "flux-system"
     }
     spec = {
       destroy = true

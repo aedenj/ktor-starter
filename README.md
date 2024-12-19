@@ -35,6 +35,13 @@ sets up the following features:
 **Infrastructure**
 * Multi-environment Terraform setup using Terragrunt
 
+### Donations
+
+Should you find any of this project useful, please consider donating through,
+
+<a href="https://www.buymeacoffee.com/aeden" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+
+At a minimum it helps with the AWS bill.
 
 ## Pre-Requisites
 1. Docker

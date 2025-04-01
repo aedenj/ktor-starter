@@ -22,7 +22,6 @@ object GracefulNettyMain {
                 )
             val config = NettyServiceConfig.create(env)
 
-            println("millisecond delay: ${config.deployment.shutdownDelay.milliseconds}")
             resourceScope {
                 server(
                     factory = Netty,

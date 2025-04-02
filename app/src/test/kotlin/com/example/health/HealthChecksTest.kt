@@ -13,8 +13,9 @@ class HealthChecksTest {
     @DisplayName("startup path returns ok")
     fun testStartup() =
         testApplication {
-            val response = client.get("/startup")
+            application { module() }
 
+            val response = client.get("/startup")
             assertThat(HttpStatusCode.OK).isEqualTo(response.status)
         }
 
@@ -22,8 +23,9 @@ class HealthChecksTest {
     @DisplayName("readiness path returns ok")
     fun testReadiness() =
         testApplication {
-            val response = client.get("/readiness")
+            application { module() }
 
+            val response = client.get("/readiness")
             assertThat(HttpStatusCode.OK).isEqualTo(response.status)
         }
 
@@ -31,8 +33,9 @@ class HealthChecksTest {
     @DisplayName("liveness path returns ok")
     fun testLiveness() =
         testApplication {
-            val response = client.get("/liveness")
+            application { module() }
 
+            val response = client.get("/liveness")
             assertThat(HttpStatusCode.OK).isEqualTo(response.status)
         }
 }

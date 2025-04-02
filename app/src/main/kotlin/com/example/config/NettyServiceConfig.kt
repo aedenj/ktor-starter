@@ -42,7 +42,6 @@ data class NettyDeploymentConfig(
 fun NettyApplicationEngine.Configuration.loadConfiguration(config: NettyDeploymentConfig) {
     loadBase(config)
 
-    config.requestQueueLimit?.let { requestQueueLimit = it }
     config.runningLimit?.let { runningLimit = it }
     config.shareWorkGroup?.let { shareWorkGroup = it }
     config.responseWriteTimeoutSeconds?.let { responseWriteTimeoutSeconds = it }

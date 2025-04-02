@@ -39,8 +39,6 @@ dependencies {
         libs.ktor.defaultheaders,
         libs.ktor.compression,
         libs.cohort,
-        tegralLibs.openapi.ktor,
-        tegralLibs.openapi.ktorui,
         libs.arrow.suspendapp,
         libs.arrow.suspendapp.ktor,
         "com.sksamuel.hoplite:hoplite-core:2.8.2",

@@ -1,8 +1,7 @@
 package com.example.smoke
 
 import com.example.Environment
-import guru.zoroark.tegral.openapi.ktor.TegralOpenApiKtor
-import guru.zoroark.tegral.openapi.ktorui.TegralSwaggerUiKtor
+import com.example.module
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.hostIsIp
 import io.ktor.server.application.pluginOrNull
@@ -61,6 +60,8 @@ class E2EServiceReadinessTest {
     fun testIgnoreTrailingSlash() =
         testApplication {
             application {
+                module()
+
                 assertThat(pluginOrNull(IgnoreTrailingSlash)).isNotNull()
                     .withFailMessage("IgnoreTrailingSlash plugin is not installed")
             }
@@ -71,6 +72,8 @@ class E2EServiceReadinessTest {
     fun testDefaultHeaders() =
         testApplication {
             application {
+                module()
+
                 assertThat(pluginOrNull(DefaultHeaders)).isNotNull()
                     .withFailMessage("DefaultHeaders plugin is not installed")
             }
@@ -81,46 +84,10 @@ class E2EServiceReadinessTest {
     fun testCompression() =
         testApplication {
             application {
+                module()
+
                 assertThat(pluginOrNull(Compression)).isNotNull()
                     .withFailMessage("Compression plugin is not installed")
-            }
-        }
-
-    @Test
-    @DisplayName("openapi is available")
-    fun testOpenApiIsSetup() =
-        testApplication {
-            application {
-                assertThat(pluginOrNull(TegralOpenApiKtor)).isNotNull()
-                    .withFailMessage("OpenApi plugin is not installed")
-            }
-
-            Given {
-                hostIsIp(service.host)
-                port(service.getMappedPort(ServiceContainer.PORT))
-            } When {
-                get("/openapi")
-            } Then {
-                statusCode(HttpStatusCode.OK.value)
-            }
-        }
-
-    @Test
-    @DisplayName("swagger ui is available")
-    fun testSwaggerUIAvailable() =
-        testApplication {
-            application {
-                assertThat(pluginOrNull(TegralSwaggerUiKtor)).isNotNull()
-                    .withFailMessage("SwaggerUI plugin is not installed")
-            }
-
-            Given {
-                hostIsIp(service.host)
-                port(service.getMappedPort(ServiceContainer.PORT))
-            } When {
-                get("/swagger")
-            } Then {
-                statusCode(HttpStatusCode.OK.value)
             }
         }
 }

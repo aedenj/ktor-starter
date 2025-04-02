@@ -49,7 +49,7 @@ class GracefulShutdownTest {
     @Order(1)
     fun `first, logs a pre-shutdown message`() {
         consumer.waitUntil({ frame ->
-            frame.utf8String.contains("Shutdown delay of 5000ms, turn it off using io.ktor.development=true")
+            frame.utf8String.contains("prewait delay of 5000ms, turn it off using io.ktor.development=true")
         }, 1, TimeUnit.SECONDS)
     }
 

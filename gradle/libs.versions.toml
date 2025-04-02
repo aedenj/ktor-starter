@@ -1,7 +1,7 @@
 [versions]
 kotlin = "2.0.21"
-ktor = "2.3.12"
-suspendapp = "0.4.0"
+ktor = "3.1.2"
+suspendapp = "0.5.0"
 junit-jupiter = "5.11.3"
 testcontainers = "1.20.3"
 
@@ -9,14 +9,14 @@ testcontainers = "1.20.3"
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 ktor-server-core = { module = "io.ktor:ktor-server-core-jvm", version.ref = "ktor" }
 ktor-server-netty = { module = "io.ktor:ktor-server-netty-jvm", version.ref = "ktor" }
-ktor-defaultheaders = { module = "io.ktor:ktor-server-default-headers", version = "2.3.12" }
-ktor-compression = { module = "io.ktor:ktor-server-compression", version = "2.3.12" }
+ktor-defaultheaders = { module = "io.ktor:ktor-server-default-headers", version.ref = "ktor" }
+ktor-compression = { module = "io.ktor:ktor-server-compression", version.ref = "ktor" }
 
 arrow-suspendapp = { module = "io.arrow-kt:suspendapp", version.ref = "suspendapp" }
 arrow-suspendapp-ktor = { module = "io.arrow-kt:suspendapp-ktor", version.ref = "suspendapp" }
 
-cohort = { module = "com.sksamuel.cohort:cohort-ktor", version = "2.5.1" }
-logback = { module = "ch.qos.logback:logback-classic", version = "1.5.16" }
+cohort = { module = "com.sksamuel.cohort:cohort-ktor", version = "2.6.1" }
+logback = { module = "ch.qos.logback:logback-classic", version = "1.5.18" }
 
 testcontainers-bom = { module = "org.testcontainers:testcontainers-bom", version.ref = "testcontainers" }
 testcontainers-core = { module = "org.testcontainers:testcontainers"  }

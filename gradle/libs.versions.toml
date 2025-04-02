@@ -1,5 +1,5 @@
 [versions]
-kotlin = "2.0.21"
+kotlin = "2.1.10"
 ktor = "3.1.2"
 suspendapp = "0.5.0"
 junit-jupiter = "5.11.3"

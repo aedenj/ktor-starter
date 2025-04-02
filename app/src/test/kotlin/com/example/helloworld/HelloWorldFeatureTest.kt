@@ -1,5 +1,6 @@
 package com.example.helloworld
 
+import com.example.module
 import io.ktor.client.request.get
 import io.ktor.client.statement.bodyAsText
 import io.ktor.http.HttpStatusCode
@@ -16,6 +17,9 @@ class HelloWorldFeatureTest {
     @DisplayName("root path returns hello world")
     fun `service is ready`() =
         testApplication {
+            application {
+                module()
+            }
             val response = client.get("/")
 
             assertThat(HttpStatusCode.OK).isEqualTo(response.status)

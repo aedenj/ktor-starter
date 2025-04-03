@@ -29,7 +29,6 @@ sets up the following features:
   * Response [compression](https://ktor.io/docs/server-compression.html)
   * Kubernetes style startup, readiness and liveness [health checks](https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/)
     using [Cohort](https://github.com/sksamuel/cohort).
-  * Swagger UI for API documentation using [Tegral's Ktor OpenAPI]( https://tegral.zoroark.guru/docs/modules/core/openapi/ktor)
 * The following Kotlin quality plugins are setup: ktlint, detekt and kover
   
 **Infrastructure**

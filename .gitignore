@@ -41,7 +41,6 @@ out/
 ### MacOS ###
 .DS_Store
 
-
 ### Terraform ###
 **/.terraform/*
 

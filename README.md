@@ -16,8 +16,8 @@
 
 ## Overview
 
-This starter is a set of utilities built on top of [Ktor](https://ktor.io) to quickly bootstrap a microservice. This starter
-sets up the following features:
+This starter is a set of utilities built on top of [Ktor](https://ktor.io) to quickly bootstrap a microservice and deploy it to Kubernetes. 
+This starter sets up the following features:
 
 **Service** 
 * Application architecture that [favors grouping by feature](https://ktor.io/docs/server-application-structure.html#group_by_feature). 

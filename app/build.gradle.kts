@@ -41,7 +41,7 @@ dependencies {
         libs.cohort,
         libs.arrow.suspendapp,
         libs.arrow.suspendapp.ktor,
-        "com.sksamuel.hoplite:hoplite-core:2.8.2",
+        "com.sksamuel.hoplite:hoplite-core:2.9.0",
         "com.sksamuel.hoplite:hoplite-hocon:2.8.2",
         libs.logback,
     ).forEach { implementation(it) }

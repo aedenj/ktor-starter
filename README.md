@@ -29,6 +29,7 @@ This starter sets up the following features:
   * Response [compression](https://ktor.io/docs/server-compression.html)
   * Kubernetes style startup, readiness and liveness [health checks](https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/)
     using [Cohort](https://github.com/sksamuel/cohort).
+* Graceful Shutdown using structured concurrency with [Arrow's SuspendApp](https://arrow-kt.io/learn/coroutines/suspendapp/ktor/)
 * The following Kotlin quality plugins are setup: ktlint, detekt and kover
   
 **Infrastructure**

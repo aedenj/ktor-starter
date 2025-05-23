@@ -24,6 +24,7 @@ This starter sets up the following features:
 * Supplement [Ktor's command line configuration](https://ktor.io/docs/server-configuration-file.html#command-line) with [Hoplite](https://github.com/sksamuel/hoplite) to provide a more complete
   solution for achieving a [12 Factor App](https://12factor.net/config).
 * The following service features using ktor plugins are setup :
+  * OpenApi & Swagger via [Smiley4 Ktor OpenApi](https://smiley4.github.io/ktor-openapi-tools/latest/) 
   * [Ignore trailing slashes](https://api.ktor.io/ktor-server/ktor-server-core/io.ktor.server.routing/-ignore-trailing-slash.html) in routes. (e.g. `foo/` and `foo` are treated the same)
   * [Default headers](https://ktor.io/docs/server-default-headers.html#configure)
   * Response [compression](https://ktor.io/docs/server-compression.html)

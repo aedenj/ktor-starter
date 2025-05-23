@@ -2,6 +2,7 @@ package com.example.smoke
 
 import com.example.Environment
 import com.example.module
+import io.github.smiley4.ktoropenapi.OpenApi
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.hostIsIp
 import io.ktor.server.application.pluginOrNull
@@ -88,6 +89,34 @@ class E2EServiceReadinessTest {
 
                 assertThat(pluginOrNull(Compression)).isNotNull()
                     .withFailMessage("Compression plugin is not installed")
+            }
+        }
+
+    @Test
+    @DisplayName("openapi is available")
+    fun testOpenApiIsSetup() =
+        testApplication {
+            Given {
+                hostIsIp(service.host)
+                port(service.getMappedPort(ServiceContainer.PORT))
+            } When {
+                get("/openapi")
+            } Then {
+                statusCode(HttpStatusCode.OK.value)
+            }
+        }
+
+    @Test
+    @DisplayName("swagger ui is available")
+    fun testSwaggerUIAvailable() =
+        testApplication {
+            Given {
+                hostIsIp(service.host)
+                port(service.getMappedPort(ServiceContainer.PORT))
+            } When {
+                get("/swagger")
+            } Then {
+                statusCode(HttpStatusCode.OK.value)
             }
         }
 }

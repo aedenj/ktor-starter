@@ -2,7 +2,6 @@ package com.example.smoke
 
 import com.example.Environment
 import com.example.module
-import io.github.smiley4.ktoropenapi.OpenApi
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.hostIsIp
 import io.ktor.server.application.pluginOrNull

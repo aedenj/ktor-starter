@@ -39,10 +39,12 @@ dependencies {
         libs.ktor.defaultheaders,
         libs.ktor.compression,
         libs.cohort,
+        libs.smiley4.openapi,
+        libs.smiley4.swaggerui,
         libs.arrow.suspendapp,
         libs.arrow.suspendapp.ktor,
-        "com.sksamuel.hoplite:hoplite-core:2.9.0",
-        "com.sksamuel.hoplite:hoplite-hocon:2.9.0",
+        libs.hoplite.core,
+        libs.hoplite.hocon,
         libs.logback,
     ).forEach { implementation(it) }
 

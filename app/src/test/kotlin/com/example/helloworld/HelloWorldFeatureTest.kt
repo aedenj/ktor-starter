@@ -23,6 +23,6 @@ class HelloWorldFeatureTest {
             val response = client.get("/")
 
             assertThat(HttpStatusCode.OK).isEqualTo(response.status)
-            assertThat("Hello, world!").isEqualTo(response.bodyAsText())
+            assertThat("Hello World!").isEqualTo(response.bodyAsText())
         }
 }

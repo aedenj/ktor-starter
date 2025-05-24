@@ -7,14 +7,13 @@ import io.ktor.server.routing.Route
 
 fun Route.helloworld() {
     get("/", {
-        description = "Returns a hello world message"
+        description = "A Hello World endpoint."
         response {
             code(HttpStatusCode.OK) {
-                description = "A success response"
-                body<String>()
+                description = "Generates a worldly greeting."
             }
         }
     }) {
-        call.respondText("Hello, world!")
+        call.respondText("Hello World!")
     }
 }

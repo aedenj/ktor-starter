@@ -31,8 +31,12 @@ This starter sets up the following features:
   * Kubernetes style startup, readiness and liveness [health checks](https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/)
     using [Cohort](https://github.com/sksamuel/cohort).
 * Graceful Shutdown using structured concurrency with [Arrow's SuspendApp](https://arrow-kt.io/learn/coroutines/suspendapp/ktor/)
-* The following Kotlin quality plugins are setup: ktlint, detekt and kover
+* The following Kotlin quality plugins are setup: 
+  * [ktlint](https://pinterest.github.io/ktlint/latest/) - Linter & Formatter
+  * [Detekt](https://detekt.dev/) - A static code analyzer
+  * [Kover](https://kotlin.github.io/kotlinx-kover/gradle-plugin/) - Code coverage
   
+
 **Infrastructure**
 * Multi-environment Terraform setup using Terragrunt
 

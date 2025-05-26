@@ -71,6 +71,17 @@ When running the service via docker compose [Ktor's auto-reload](https://ktor.io
 functionality is enabled. This means that if you open a separate terminal and run the command `./gradlew -t build -x test -i`
 when you make changes to the code, the service will automatically reload.
 
+
+## Contributing
+
+Contributions are welcome! Please fork this repository and submit pull requests.
+
+1. Fork it (https://github.com/aedenj/ktor-starter/fork)
+2. Create your feature branch (`git checkout -b feature/my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin feature/my-new-feature`)
+5. Create a new Pull Request
+
 ## Troubleshooting
 
 * The jib task may fail initially from an authentication error like following,

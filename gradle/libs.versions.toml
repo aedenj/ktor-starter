@@ -4,7 +4,7 @@ ktor = "3.2.0"
 suspendapp = "2.1.2"
 junit-jupiter = "5.13.1"
 testcontainers = "1.21.2"
-smiley4openapi = "5.0.2"
+smiley4openapi = "5.1.0"
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }

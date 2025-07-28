@@ -1,6 +1,8 @@
 package com.example
 
-enum class Environment(private val env: String) {
+enum class Environment(
+    private val env: String,
+) {
     LOCAL("local"),
     TEST("test"), ;
 

@@ -62,7 +62,8 @@ class E2EServiceReadinessTest {
             application {
                 module()
 
-                assertThat(pluginOrNull(IgnoreTrailingSlash)).isNotNull()
+                assertThat(pluginOrNull(IgnoreTrailingSlash))
+                    .isNotNull()
                     .withFailMessage("IgnoreTrailingSlash plugin is not installed")
             }
         }
@@ -74,7 +75,8 @@ class E2EServiceReadinessTest {
             application {
                 module()
 
-                assertThat(pluginOrNull(DefaultHeaders)).isNotNull()
+                assertThat(pluginOrNull(DefaultHeaders))
+                    .isNotNull()
                     .withFailMessage("DefaultHeaders plugin is not installed")
             }
         }
@@ -86,7 +88,8 @@ class E2EServiceReadinessTest {
             application {
                 module()
 
-                assertThat(pluginOrNull(Compression)).isNotNull()
+                assertThat(pluginOrNull(Compression))
+                    .isNotNull()
                     .withFailMessage("Compression plugin is not installed")
             }
         }

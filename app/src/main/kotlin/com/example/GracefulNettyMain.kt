@@ -18,7 +18,9 @@ object GracefulNettyMain {
             val cmdLineConfig = CommandLineConfig(args)
             val env =
                 Environment.valueOf(
-                    cmdLineConfig.rootConfig.environment.config.tryGetString("ktor.environment")!!.uppercase(),
+                    cmdLineConfig.rootConfig.environment.config
+                        .tryGetString("ktor.environment")!!
+                        .uppercase(),
                 )
             val config = NettyServiceConfig.create(env)
 

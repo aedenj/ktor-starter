@@ -35,7 +35,10 @@ class GracefulShutdownTest {
     fun setUp() {
         service.start()
         service.followOutput(consumer)
-        service.dockerClient.killContainerCmd(service.containerId).withSignal("SIGTERM").exec()
+        service.dockerClient
+            .killContainerCmd(service.containerId)
+            .withSignal("SIGTERM")
+            .exec()
     }
 
     @AfterAll

@@ -84,13 +84,13 @@ application {
 tasks {
     java {
         toolchain {
-            languageVersion = JavaLanguageVersion.of(11)
+            languageVersion = JavaLanguageVersion.of(17)
         }
     }
 
     jib {
         from {
-            image = "eclipse-temurin:11-jre"
+            image = "eclipse-temurin:17-jre"
             platforms {
                 platform {
                     architecture = "arm64"

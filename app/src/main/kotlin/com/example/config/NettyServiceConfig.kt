@@ -10,14 +10,13 @@ data class NettyServiceConfig(
     @ConfigAlias("deployment") val deployment: NettyDeploymentConfig,
 ) {
     companion object {
-        fun create(env: Environment): NettyServiceConfig {
-            return ConfigLoaderBuilder.Companion
+        fun create(env: Environment): NettyServiceConfig =
+            ConfigLoaderBuilder.Companion
                 .default()
                 .addResourceSource("/application.$env.conf")
                 .addResourceSource("/application.conf")
                 .build()
                 .loadConfigOrThrow<NettyServiceConfig>(prefix = "ktor")
-        }
     }
 }
 

@@ -2,7 +2,7 @@
 kotlin = "2.2.0"
 ktor = "3.2.1"
 suspendapp = "2.1.2"
-junit-jupiter = "5.13.3"
+junit-jupiter = "5.13.4"
 testcontainers = "1.21.3"
 smiley4openapi = "5.1.0"
 

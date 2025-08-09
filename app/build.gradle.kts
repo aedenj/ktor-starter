@@ -135,6 +135,8 @@ tasks {
     test {
         useJUnitPlatform()
 
+        dependsOn("jibDockerBuild")
+
         testlogger {
             theme = ThemeType.MOCHA
             slowThreshold = 5000

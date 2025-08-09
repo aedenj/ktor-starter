@@ -4,11 +4,23 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    reviewers:
+      - "aedenj"
   - package-ecosystem: "terraform"
     directory: "/deploy"
     schedule:
       interval: "weekly"
+    reviewers:
+      - "aedenj"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
+    reviewers:
+      - "aedenj"
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    reviewers:
+      - "aedenj"

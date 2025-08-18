@@ -29,8 +29,8 @@ testcontainers-bom = { module = "org.testcontainers:testcontainers-bom", version
 testcontainers-core = { module = "org.testcontainers:testcontainers"  }
 testcontainers-junit = { module = "org.testcontainers:junit-jupiter" }
 
-restassured = { module = "io.rest-assured:rest-assured", version = "5.5.5" }
-restassured-kotlinext = { module = "io.rest-assured:kotlin-extensions", version = "5.5.5" }
+restassured = { module = "io.rest-assured:rest-assured", version = "5.5.6" }
+restassured-kotlinext = { module = "io.rest-assured:kotlin-extensions", version = "5.5.6" }
 
 ktor-server-test = { module = "io.ktor:ktor-server-test-host", version.ref = "ktor" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }

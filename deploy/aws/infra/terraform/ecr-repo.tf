@@ -2,9 +2,9 @@ data "aws_caller_identity" "current" {}
 
 module "ecr" {
   source  = "terraform-aws-modules/ecr/aws"
-  version = "2.3.0"
+  version = "3.0.1"
 
-  repository_name = "ktor-starter-app"
+  repository_name = var.app_name
   repository_read_write_access_arns = [data.aws_caller_identity.current.arn]
 
   create_lifecycle_policy           = true

@@ -63,11 +63,23 @@ asdf, there is a `.tool-versions` file in the root of the project that you can u
 
 ## Up & Running
 
-Let's first clone the repo and fire up our system,
+Let's first clone the repo, 
 
 ```shell
 git clone git@github.com:aedenj/ktor-starter.git ~/projects/ktor-starter
-cd ~/projects/ktor-starter;docker compose up
+cd ~/projects/ktor-starter
+```
+Now that you have the project, here are a couple of ways to get the service up and running.
+
+### Minikube
+If you want to run the service locally in Minikube, please refer to the [wiki page](https://github.com/aedenj/ktor-starter/wiki/Local-Development-with-Minikube)
+
+### Docker
+
+Run the following command to start the service using Docker Compose,
+
+```shell
+docker compose up
 ```
 
 This will start the app on port 8080. Navigate to [http://localhost:8080](http://localhost:8080) to see the app running.

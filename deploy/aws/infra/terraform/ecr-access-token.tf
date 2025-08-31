@@ -21,10 +21,16 @@ locals {
   })
 }
 
+resource "kubernetes_namespace" "app_namespace" {
+  metadata {
+    name = var.app_namespace
+  }
+}
+
 resource "kubernetes_secret" "app_secret" {
   metadata {
-    name      = "ktor-starter-app-secret"
-    namespace = "flux-system"
+    name      = var.secret_name
+    namespace = kubernetes_namespace.app_namespace.metadata[0].name
   }
 
   data = {

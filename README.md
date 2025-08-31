@@ -35,7 +35,7 @@ This starter sets up the following features:
 
 **Infrastructure**
 * Easy [deployment to Minikube](https://github.com/aedenj/ktor-starter/wiki/Local-Development-with-Minikube)
-* Multi-environment Terraform setup using Terragrunt
+* Multi-environment Terraform setup using Terragrunt (In Progress)
 
 **Build Setup**
 * [Jib](https://github.com/GoogleContainerTools/jib/tree/master/jib-gradle-plugin) - For building Docker images.

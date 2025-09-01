@@ -1,4 +1,4 @@
 dependency "minikube" {
-  config_path = "../cluster"
+  config_path  = "../cluster"
   skip_outputs = true
 }

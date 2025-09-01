@@ -15,7 +15,7 @@ on:
       - '**/docs/**'
 
 concurrency: # set other jobs with the same 'group' in a queue
-  group: platform-infra
+  group: ktor-starter
   cancel-in-progress: false
 
 permissions:
@@ -52,6 +52,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
+      - name: Assert AWS role ARN is present
+        if: ${{ github.event.pull_request.head.repo.fork == false }}
+        run: |
+          if [ -z "${{ secrets.AWS_ROLE_ARN }}" ]; then
+            echo "::error::AWS_ROLE_ARN secret is missing or not accessible in this context."
+            exit 1
+          fi
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@7474bc4690e29a8392af63c5b98e7449536d5c3a # v4.3.1
         with:
@@ -62,7 +70,7 @@ jobs:
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: "1.13.1"
+          terraform_version: '1.13.1'
           terraform_wrapper: false
 
       - name: Expose Terraform Path
@@ -72,15 +80,16 @@ jobs:
         id: lint
         uses: gruntwork-io/terragrunt-action@95fc057922e3c3d4cc021a81a213f088f333ddef # v3.0.2
         with:
-          tf_path: ${{ env.TERRAFORM_BIN }}"
+          tf_path: ${{ env.TERRAFORM_BIN }}
           tg_version: ${{ env.tg_version }}
           tg_dir: ${{ env.working_dir }}
-          tg_command: 'hcl format --check --diff'
+          tg_command: |
+            hcl format --check --diff
 
       - name: Init
         uses: gruntwork-io/terragrunt-action@95fc057922e3c3d4cc021a81a213f088f333ddef # v3.0.2
         with:
-          tf_path: ${{ env.TERRAFORM_BIN }}"
+          tf_path: ${{ env.TERRAFORM_BIN }}
           tg_version: ${{ env.tg_version }}
           tg_dir: ${{ env.working_dir }}
           tg_command: |
@@ -93,7 +102,7 @@ jobs:
         id: validate
         uses: gruntwork-io/terragrunt-action@95fc057922e3c3d4cc021a81a213f088f333ddef # v3.0.2
         with:
-          tf_path: ${{ env.TERRAFORM_BIN }}"
+          tf_path: ${{ env.TERRAFORM_BIN }}
           tg_version: ${{ env.tg_version }}
           tg_dir: ${{ env.working_dir }}
           tg_command: |
@@ -106,7 +115,7 @@ jobs:
         id: plan
         uses: gruntwork-io/terragrunt-action@95fc057922e3c3d4cc021a81a213f088f333ddef # v3.0.2
         with:
-          tf_path: ${{ env.TERRAFORM_BIN }}"
+          tf_path: ${{ env.TERRAFORM_BIN }}
           tg_version: ${{ env.tg_version }}
           tg_dir: ${{ env.working_dir }}
           tg_command: | 

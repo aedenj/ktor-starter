@@ -23,7 +23,6 @@ remote_state {
     key     = "${local.env}/${local.app_name}/${path_relative_to_include()}/terraform.tfstate"
     encrypt = false
     region  = "${local.region}"
-    profile = "default"
   }
 }
 
@@ -37,7 +36,7 @@ generate "versions" {
       required_providers {
         aws = {
           source = "hashicorp/aws"
-          version = "~> 6.0.0"
+          version = "~> 6.0"
         }
       }
     }

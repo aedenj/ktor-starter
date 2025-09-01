@@ -23,11 +23,11 @@ plan-all:
 .PHONY: plan-all
 
 minikube-up:
-	terragrunt run-all apply --terragrunt-working-dir deploy/minikube/infra --terragrunt-non-interactive
+	terragrunt run --all apply --working-dir deploy/minikube/infra --non-interactive
 .PHONY: minikube-up
 
 minikube-down:
-	terragrunt run-all destroy --terragrunt-working-dir deploy/minikube/infra --terragrunt-non-interactive;minikube delete --all --purge
+	terragrunt run --all destroy --working-dir deploy/minikube/infra --non-interactive;minikube delete --all --purge
 .PHONY: minikube-down
 
 push-image-to-minikube:
@@ -35,11 +35,11 @@ push-image-to-minikube:
 .PHONY: push-image-to-minikube
 
 app-up: push-image-to-minikube
-	terragrunt run-all apply --terragrunt-working-dir deploy/minikube/service --terragrunt-non-interactive
+	terragrunt run --all apply --working-dir deploy/minikube/service --non-interactive
 .PHONY: app-up
 
 app-down:
-	terragrunt run-all destroy --terragrunt-working-dir deploy/minikube/service --terragrunt-non-interactive
+	terragrunt run --all destroy --working-dir deploy/minikube/service --non-interactive
 .PHONY: app-down
 
 deploy-aws-infra:

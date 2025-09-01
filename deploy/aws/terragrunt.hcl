@@ -23,7 +23,6 @@ remote_state {
     key     = "${local.env}/${local.app_name}/${path_relative_to_include()}/terraform.tfstate"
     encrypt = false
     region  = "${local.region}"
-    profile = "default"
   }
 }
 

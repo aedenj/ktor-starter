@@ -84,7 +84,7 @@ jobs:
           tg_version: ${{ env.tg_version }}
           tg_dir: ${{ env.working_dir }}
           tg_command: |
-            run-all init --terragrunt-non-interactive
+            run --all init --non-interactive
         env:
           ORG_NAME: ${{ vars.ORG_NAME }}
           DEPLOYMENT: ${{ matrix.infra_env }}-${{ matrix.region }}
@@ -97,7 +97,7 @@ jobs:
           tg_version: ${{ env.tg_version }}
           tg_dir: ${{ env.working_dir }}
           tg_command: |
-            run-all validate --terragrunt-non-interactive
+            run --all validate --non-interactive
         env:
           ORG_NAME: ${{ vars.ORG_NAME }}
           DEPLOYMENT: ${{ matrix.infra_env }}-${{ matrix.region }}
@@ -110,7 +110,7 @@ jobs:
           tg_version: ${{ env.tg_version }}
           tg_dir: ${{ env.working_dir }}
           tg_command: | 
-            run-all plan --terragrunt-non-interactive
+            run --all plan --non-interactive
         env:
           ORG_NAME: ${{ vars.ORG_NAME }}
           DEPLOYMENT: ${{ matrix.infra_env }}-${{ matrix.region }}

@@ -68,7 +68,7 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
 
       - name: Install Terraform
-        uses: hashicorp/setup-terraform@v3
+        uses: hashicorp/setup-terraform@b9cd54a3c349d3f38e8881555d616ced269862dd # v3.1.2
         with:
           terraform_version: '1.13.1'
           terraform_wrapper: false
@@ -95,7 +95,6 @@ jobs:
           tg_command: |
             run --all init --non-interactive
         env:
-          ORG_NAME: ${{ vars.ORG_NAME }}
           DEPLOYMENT: ${{ matrix.infra_env }}-${{ matrix.region }}
 
       - name: Validate
@@ -108,7 +107,6 @@ jobs:
           tg_command: |
             run --all validate --non-interactive
         env:
-          ORG_NAME: ${{ vars.ORG_NAME }}
           DEPLOYMENT: ${{ matrix.infra_env }}-${{ matrix.region }}
 
       - name: Plan
@@ -121,6 +119,5 @@ jobs:
           tg_command: | 
             run --all plan --non-interactive
         env:
-          ORG_NAME: ${{ vars.ORG_NAME }}
           DEPLOYMENT: ${{ matrix.infra_env }}-${{ matrix.region }}
           TF_VAR_kube_data_auth_enabled: true

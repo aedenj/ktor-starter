@@ -28,7 +28,8 @@ env:
   working_dir: 'deploy/aws/'
   TF_IN_AUTOMATION: 'true'
   TF_INPUT: 'false'
-  TF_PLUGIN_CACHE_DIR: ${{ github.workspace }}/.terraform.d/plugin-cache
+  TG_PROVIDER_CACHE: 1
+  TG_PROVIDER_CACHE_DIR: ${{ github.workspace }}/.terragrunt-cache
 
 jobs:
   validate:

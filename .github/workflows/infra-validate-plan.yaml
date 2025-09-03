@@ -28,8 +28,7 @@ env:
   working_dir: 'deploy/aws/'
   TF_IN_AUTOMATION: 'true'
   TF_INPUT: 'false'
-  TG_PROVIDER_CACHE: 1
-  TG_PROVIDER_CACHE_DIR: ${{ github.workspace }}/.terragrunt-cache
+  TF_PLUGIN_CACHE_DIR: ${{ github.workspace }}/.terraform.d/plugin-cache
 
 jobs:
   validate:
@@ -56,6 +55,15 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+
+      - name: Create Terraform Plugin Cache Dir
+        run: mkdir -p $TF_PLUGIN_CACHE_DIR
+
+      - name: Terraform Plugin Cache
+        uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4.2.4
+        with:
+          path: ${{ env.TF_PLUGIN_CACHE_DIR }}
+          key: ${{ runner.os }}-terraform-plugin-cache-${{ hashFiles('**/.terraform.lock.hcl') }}
 
       - name: Install Terraform
         uses: hashicorp/setup-terraform@b9cd54a3c349d3f38e8881555d616ced269862dd # v3.1.2
@@ -102,6 +110,7 @@ jobs:
             run --all init --non-interactive
         env:
           DEPLOYMENT: ${{ matrix.infra_env }}-${{ matrix.region }}
+          TF_PLUGIN_CACHE_DIR: ${{ env.TF_PLUGIN_CACHE_DIR }}
 
       - name: Validate
         id: validate
@@ -114,6 +123,7 @@ jobs:
             run --all validate --non-interactive
         env:
           DEPLOYMENT: ${{ matrix.infra_env }}-${{ matrix.region }}
+          TF_PLUGIN_CACHE_DIR: ${{ env.TF_PLUGIN_CACHE_DIR }}
 
       - name: Plan
         id: plan
@@ -126,6 +136,7 @@ jobs:
             run --all plan --non-interactive -- -out=plan.tfplan
         env:
           DEPLOYMENT: ${{ matrix.infra_env }}-${{ matrix.region }}
+          TF_PLUGIN_CACHE_DIR: ${{ env.TF_PLUGIN_CACHE_DIR }}
           TF_VAR_kube_data_auth_enabled: true
 
       - name: Upload Terraform Plans

@@ -122,7 +122,17 @@ jobs:
           tg_version: ${{ env.tg_version }}
           tg_dir: ${{ env.working_dir }}
           tg_command: | 
-            run --all plan --non-interactive
+            run --all plan --non-interactive --include-module-prefix -- -out=plan.tfplan
         env:
           DEPLOYMENT: ${{ matrix.infra_env }}-${{ matrix.region }}
           TF_VAR_kube_data_auth_enabled: true
+
+      - name: Upload Terraform Plans
+        if: ${{ success() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: terragrunt-plans-${{ matrix.infra_env }}-${{ matrix.region }}
+          path: |
+            deploy/aws/**/plan.tfplan
+            deploy/aws/**/.terragrunt-cache/**/plan.tfplan
+          if-no-files-found: ignore

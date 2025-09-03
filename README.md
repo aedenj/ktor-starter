@@ -12,6 +12,7 @@
 * [Troubleshooting](#troubleshooting)
 * Additional Topics
   * [Local Development with Minikube](https://github.com/aedenj/ktor-starter/wiki/Local-Development-with-Minikube)
+  * [Deploy to AWS EKS](https://github.com/aedenj/ktor-starter/wiki/Local-Development-with-Minikube)
 <!-- toc-end -->
 
 ## Overview
@@ -71,9 +72,6 @@ cd ~/projects/ktor-starter
 ```
 Now that you have the project, here are a couple of ways to get the service up and running.
 
-### Minikube
-If you want to run the service locally in Minikube, please refer to the [wiki page](https://github.com/aedenj/ktor-starter/wiki/Local-Development-with-Minikube)
-
 ### Docker
 
 Run the following command to start the service using Docker Compose,
@@ -84,6 +82,11 @@ docker compose up
 
 This will start the app on port 8080. Navigate to [http://localhost:8080](http://localhost:8080) to see the app running.
 
+### Minikube
+If you want to run the service locally in Minikube, please refer to the [wiki page](https://github.com/aedenj/ktor-starter/wiki/Local-Development-with-Minikube)
+
+### AWS EKS
+If you want to deploy the service to AWS EKS, please refer to the [wiki page](
 
 ## Live Reload
 

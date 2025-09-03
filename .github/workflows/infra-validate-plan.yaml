@@ -122,7 +122,7 @@ jobs:
           tg_version: ${{ env.tg_version }}
           tg_dir: ${{ env.working_dir }}
           tg_command: | 
-            run --all plan --non-interactive --terragrunt-include-module-prefix=true -- -out=plan.tfplan
+            run --all plan --non-interactive -- -out=plan.tfplan
         env:
           DEPLOYMENT: ${{ matrix.infra_env }}-${{ matrix.region }}
           TF_VAR_kube_data_auth_enabled: true

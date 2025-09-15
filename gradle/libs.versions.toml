@@ -1,6 +1,6 @@
 [versions]
 kotlin = "2.2.10"
-ktor = "3.2.3"
+ktor = "3.3.0"
 suspendapp = "2.1.2"
 junit-jupiter = "5.13.4"
 testcontainers = "1.21.3"

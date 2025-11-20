@@ -7,7 +7,7 @@ import com.sksamuel.hoplite.addResourceSource
 import io.ktor.server.netty.NettyApplicationEngine
 
 data class NettyServiceConfig(
-    @ConfigAlias("deployment") val deployment: NettyDeploymentConfig,
+    @param:ConfigAlias("deployment") val deployment: NettyDeploymentConfig,
 ) {
     companion object {
         fun create(env: Environment): NettyServiceConfig =

@@ -12,7 +12,6 @@
 * [Troubleshooting](#troubleshooting)
 * Additional Topics
   * [Local Development with Minikube](https://github.com/aedenj/ktor-starter/wiki/Local-Development-with-Minikube)
-  * [Deploy to AWS EKS](https://github.com/aedenj/ktor-starter/wiki/Local-Development-with-Minikube)
 <!-- toc-end -->
 
 ## Overview
@@ -84,9 +83,6 @@ This will start the app on port 8080. Navigate to [http://localhost:8080](http:/
 
 ### Minikube
 If you want to run the service locally in Minikube, please refer to the [wiki page](https://github.com/aedenj/ktor-starter/wiki/Local-Development-with-Minikube)
-
-### AWS EKS
-If you want to deploy the service to AWS EKS, please refer to the [wiki page](
 
 ## Live Reload
 

@@ -49,13 +49,13 @@ dependencies {
     ).forEach { implementation(it) }
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-    implementation(platform(libs.testcontainers.bom))
     listOf(
         libs.restassured,
         libs.restassured.kotlinext,
         libs.junit.jupiter,
         libs.assertj,
         libs.ktor.server.test,
+        platform(libs.testcontainers.bom),
         libs.testcontainers.core,
         libs.testcontainers.junit,
     ).forEach { testImplementation(it) }

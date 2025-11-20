@@ -32,6 +32,7 @@ env:
 
 jobs:
   validate:
+    if: github.actor != 'dependabot[bot]'
     name: Infra - Validate & Plan
     runs-on: ubuntu-latest
     timeout-minutes: 30 # avoid using gitHub runners time

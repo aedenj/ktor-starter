@@ -1,6 +1,6 @@
 [versions]
-kotlin = "2.2.20"
-ktor = "3.2.3"
+kotlin = "2.2.10"
+ktor = "3.3.0"
 suspendapp = "2.1.2"
 junit-jupiter = "5.13.4"
 testcontainers = "1.21.3"
@@ -40,7 +40,7 @@ assertj = { module= "org.assertj:assertj-core", version = "3.27.6" }
 jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 jib = { id = "com.google.cloud.tools.jib", version = "3.4.5" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version = "13.1.0" }
-kover = { id = "org.jetbrains.kotlinx.kover", version = "0.9.1" }
+kover = { id = "org.jetbrains.kotlinx.kover", version = "0.9.3" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version = "1.23.8" }
 testlogger = { id = "com.adarshr.test-logger", version = "4.0.0" }
 tasktree = { id = "com.dorongold.task-tree", version = "4.0.1" }

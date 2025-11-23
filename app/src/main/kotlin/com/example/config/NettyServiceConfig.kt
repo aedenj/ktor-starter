@@ -14,7 +14,6 @@ data class NettyServiceConfig(
             ConfigLoaderBuilder.Companion
                 .default()
                 .addResourceSource("/application.$env.conf")
-                .addResourceSource("/application.conf")
                 .build()
                 .loadConfigOrThrow<NettyServiceConfig>(prefix = "ktor")
     }

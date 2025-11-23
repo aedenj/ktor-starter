@@ -6,6 +6,7 @@ junit-jupiter = "6.0.0"
 smiley4openapi = "5.3.0"
 testcontainers = "2.0.2"
 restassured = "5.5.6"
+hoplite = "2.9.0"
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
@@ -17,8 +18,8 @@ ktor-compression = { module = "io.ktor:ktor-server-compression", version.ref = "
 smiley4-openapi = { module = "io.github.smiley4:ktor-openapi", version.ref = "smiley4openapi" }
 smiley4-swaggerui = { module = "io.github.smiley4:ktor-swagger-ui", version.ref = "smiley4openapi" }
 
-hoplite-core =  { module = "com.sksamuel.hoplite:hoplite-core", version = "2.9.0" }
-hoplite-hocon = { module = "com.sksamuel.hoplite:hoplite-hocon", version = "2.9.0" }
+hoplite-core =  { module = "com.sksamuel.hoplite:hoplite-core", version.ref = "hoplite" }
+hoplite-hocon = { module = "com.sksamuel.hoplite:hoplite-hocon", version.ref = "hoplite" }
 
 arrow-suspendapp = { module = "io.arrow-kt:suspendapp", version.ref = "suspendapp" }
 arrow-suspendapp-ktor = { module = "io.arrow-kt:suspendapp-ktor", version.ref = "suspendapp" }

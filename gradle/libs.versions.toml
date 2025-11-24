@@ -1,7 +1,7 @@
 [versions]
 kotlin = "2.2.10"
 ktor = "3.3.2"
-suspendapp = "2.1.2"
+suspendapp = "2.2.0"
 junit-jupiter = "6.0.1"
 smiley4openapi = "5.3.0"
 testcontainers = "2.0.2"

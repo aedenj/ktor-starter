@@ -71,6 +71,16 @@ cd ~/projects/ktor-starter
 ```
 Now that you have the project, here are a couple of ways to get the service up and running.
 
+### On the Metal
+
+You can run the service directly using Gradle. Run the following command,
+
+```shell
+make run
+```
+This will start the app on port 8080 in development mode. Navigate to 
+[http://localhost:8080](http://localhost:8080) to see the app running.
+
 ### Docker
 
 Run the following command to start the service using Docker Compose,

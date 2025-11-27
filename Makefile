@@ -13,6 +13,11 @@ default:
 	docker -v
 	terraform -v
 	terragrunt -v
+.PHONY: default
+
+run:
+	KTOR_ENV=local ./gradlew run --args=-config=application.local.conf
+.PHONY: run
 
 plan-all:
 	echo "Planning all resources for ORG: $(org_name), DEPLOYMENT: $(DEPLOYMENT)"

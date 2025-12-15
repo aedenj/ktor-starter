@@ -25,7 +25,7 @@ arrow-suspendapp = { module = "io.arrow-kt:suspendapp", version.ref = "suspendap
 arrow-suspendapp-ktor = { module = "io.arrow-kt:suspendapp-ktor", version.ref = "suspendapp" }
 
 cohort = { module = "com.sksamuel.cohort:cohort-ktor", version = "2.8.1" }
-logback = { module = "ch.qos.logback:logback-classic", version = "1.5.21" }
+logback = { module = "ch.qos.logback:logback-classic", version = "1.5.22" }
 
 testcontainers-bom = { module = "org.testcontainers:testcontainers-bom", version.ref = "testcontainers" }
 testcontainers-core = { module = "org.testcontainers:testcontainers"  }

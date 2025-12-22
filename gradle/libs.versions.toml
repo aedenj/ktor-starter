@@ -40,7 +40,7 @@ assertj = { module= "org.assertj:assertj-core", version = "3.27.6" }
 
 [plugins]
 jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-jib = { id = "com.google.cloud.tools.jib", version = "3.5.1" }
+jib = { id = "com.google.cloud.tools.jib", version = "3.5.2" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version = "14.0.1" }
 kover = { id = "org.jetbrains.kotlinx.kover", version = "0.9.3" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version = "1.23.8" }

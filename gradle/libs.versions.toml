@@ -5,7 +5,7 @@ suspendapp = "2.2.0"
 junit-jupiter = "6.0.1"
 smiley4openapi = "5.4.0"
 testcontainers = "2.0.2"
-restassured = "5.5.6"
+restassured = "6.0.0"
 hoplite = "2.9.0"
 
 [libraries]

@@ -22,7 +22,7 @@ jobs:
 
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
       - name: Gradle Wrapper Validation
-        uses: gradle/actions/wrapper-validation@bfd569614358980afc8f89c2730eee75bb97efdf # v5.0.0
+        uses: gradle/actions/wrapper-validation@576fcbecfed70890e466eeffd7c78d93b30b0472 # v5.0.0
 
   build:
     name: "Build & Test"

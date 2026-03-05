@@ -4,5 +4,8 @@
       "Bash(./gradlew ktlintCheck:*)",
       "Bash(./gradlew ktlintFormat:*)"
     ]
+  },
+  "env": {
+    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": 96000
   }
 }

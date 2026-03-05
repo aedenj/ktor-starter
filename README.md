@@ -24,12 +24,15 @@ This starter sets up the following features:
 * Supplement [Ktor's command line configuration](https://ktor.io/docs/server-configuration-file.html#command-line) with [Hoplite](https://github.com/sksamuel/hoplite) to provide a more complete
   solution for achieving a [12 Factor App](https://12factor.net/config).
 * The following service features using ktor plugins are setup :
-  * OpenApi & Swagger via [Smiley4 Ktor OpenApi](https://smiley4.github.io/ktor-openapi-tools/latest/) 
+  * OpenApi & Swagger via [Smiley4 Ktor OpenApi](https://smiley4.github.io/ktor-openapi-tools/latest/)
   * [Ignore trailing slashes](https://api.ktor.io/ktor-server/ktor-server-core/io.ktor.server.routing/-ignore-trailing-slash.html) in routes. (e.g. `foo/` and `foo` are treated the same)
   * [Default headers](https://ktor.io/docs/server-default-headers.html#configure)
   * Response [compression](https://ktor.io/docs/server-compression.html)
   * Kubernetes style startup, readiness and liveness [health checks](https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/)
     using [Cohort](https://github.com/sksamuel/cohort).
+  * Structured error responses via [RFC 7807 Problem Details](https://www.rfc-editor.org/rfc/rfc7807)
+    (`application/problem+json`) for API clients, and animated HTML error pages for browsers — content
+    negotiated automatically via the `Accept` header.
 * Graceful Shutdown using structured concurrency with [Arrow's SuspendApp](https://arrow-kt.io/learn/coroutines/suspendapp/ktor/)
   
 

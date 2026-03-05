@@ -24,6 +24,8 @@ plugins {
 
     // https://github.com/dorongold/gradle-task-tree -- very helpful for debugging gradle tasks
     alias(libs.plugins.tasktree)
+
+    alias(libs.plugins.serialization)
 }
 
 repositories {
@@ -46,6 +48,8 @@ dependencies {
         libs.hoplite.core,
         libs.hoplite.hocon,
         libs.logback,
+        libs.kotlinx.serialization.json,
+        libs.ktor.server.status.pages,
     ).forEach { implementation(it) }
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")

@@ -3,6 +3,7 @@
 package com.example.errors
 
 import io.ktor.http.ContentType
+import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application
 import io.ktor.server.application.ApplicationCall
@@ -19,33 +20,40 @@ val ProblemJson = ContentType("application", "problem+json")
 fun Application.module() {
     install(StatusPages) {
         exception<BadRequestException> { call, cause ->
-            call.respondProblem(HttpStatusCode.BadRequest, cause.message)
+            call.respondError(HttpStatusCode.BadRequest, cause.message)
         }
         exception<NotFoundException> { call, cause ->
-            call.respondProblem(HttpStatusCode.NotFound, cause.message)
+            call.respondError(HttpStatusCode.NotFound, cause.message)
         }
         exception<Throwable> { call, _ ->
-            call.respondProblem(HttpStatusCode.InternalServerError, "An unexpected error occurred")
+            call.respondError(HttpStatusCode.InternalServerError, "An unexpected error occurred")
         }
         status(HttpStatusCode.NotFound) { call, status ->
-            call.respondProblem(status, "The requested resource was not found")
+            call.respondError(status, "The requested resource was not found")
         }
         status(HttpStatusCode.MethodNotAllowed) { call, status ->
-            call.respondProblem(status, "Method not allowed")
+            call.respondError(status, "Method not allowed")
         }
     }
 }
 
-private suspend fun ApplicationCall.respondProblem(
+private fun ApplicationCall.wantsBrowser(): Boolean = request.headers[HttpHeaders.Accept]?.contains("text/html") == true
+
+private suspend fun ApplicationCall.respondError(
     status: HttpStatusCode,
     detail: String? = null,
 ) {
-    val problem =
-        ProblemDetails(
-            title = status.description,
-            status = status.value,
-            detail = detail,
-            instance = request.path(),
-        )
-    respondText(Json.encodeToString(problem), ProblemJson, status)
+    val path = request.path()
+    if (wantsBrowser()) {
+        respondText(errorHtml(status, detail, path), ContentType.Text.Html, status)
+    } else {
+        val problem =
+            ProblemDetails(
+                title = status.description,
+                status = status.value,
+                detail = detail,
+                instance = path,
+            )
+        respondText(Json.encodeToString(problem), ProblemJson, status)
+    }
 }

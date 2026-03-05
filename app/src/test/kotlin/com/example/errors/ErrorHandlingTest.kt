@@ -64,7 +64,7 @@ class ErrorHandlingTest {
         testApplication {
             application {
                 module()
-                routing { get("/boom") { throw RuntimeException("something went wrong") } }
+                routing { get("/boom") { throw IllegalStateException("something went wrong") } }
             }
             val response =
                 client.get("/boom") {

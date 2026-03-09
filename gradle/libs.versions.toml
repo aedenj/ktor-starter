@@ -1,6 +1,6 @@
 [versions]
 kotlin = "2.3.10"
-ktor = "3.4.0"
+ktor = "3.4.1"
 suspendapp = "2.2.1.1"
 junit-jupiter = "6.0.3"
 smiley4openapi = "5.6.0"
